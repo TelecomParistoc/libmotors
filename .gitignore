@@ -3,6 +3,8 @@ build/
 tests/motordriver
 tests/simplemoves
 tests/absolute
+tests/simpleturn
+tests/moveTo_command_line
 ._*
 *.swp
 .pirun.*

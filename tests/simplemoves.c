@@ -19,7 +19,7 @@ void mvdone() {
 	printf("End of move\n");
 	waitFor(1000);
 
-	static int sign = 1;
+	static int sign = -1;
 	sign *= -1;
 	move(sign * 600, mvdone);
 	//printf("start turning to 90deg\n");
@@ -33,12 +33,13 @@ int main() {
 	setHeading(0);
 
 	//printf("start moving of 600mm\n");
-	move(600, mvdone);
+	move(-600, mvdone);
 	//turn(90, turndone);
 
 
 	while(1) {
 		printf("position [%.3f,%.3f], heading >%d°<\n", getPosX(), getPosY(), getHeading());
+		printf("relatif : %d\n", getDistance());
 		waitFor(1000);
 	}
 	return 0;

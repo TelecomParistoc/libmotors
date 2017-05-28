@@ -152,6 +152,7 @@ void moveTo(int x, int y, int goalAngle, void (*callback)(void)) {
 
 // called when a queued move has been completed
 static void queuedMoveDone() {
+	printf("queuedMoveDone is called\n");
 	struct pathPoint* lastMove = (struct pathPoint*) getHead();
 	// call move callback if any
 	if(lastMove != NULL && lastMove->callback != NULL)
@@ -175,6 +176,7 @@ void addPointInPath(int x, int y, int goalAngle, void (*callback)(void)) {
 	addToQueue((void*) newMove);
 	// if newMove is the only item is the queue, start move now
 	if(getQueueSize() == 1)
+	printf("moveTO %d %d\n", x, y);
 		moveTo(x, y, goalAngle, queuedMoveDone);
 }
 
