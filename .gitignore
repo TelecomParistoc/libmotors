@@ -1,6 +1,8 @@
 **/.DS_Store
 build/
 tests/motordriver
+tests/simplemoves
+tests/absolute
 ._*
 *.swp
 .pirun.*
