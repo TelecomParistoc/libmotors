@@ -14,16 +14,20 @@ void turndone() {
 }
 
 void mvdone() {
-	waitFor(1000);
-	printf("start turning to 90deg\n");
-	turn(90, turndone);
+	printf("End of move\n");
+	//waitFor(1000);
+	//printf("start turning to 90deg\n");
+	//turn(90, turndone);
 }
 
 int main() {
-	printf("start moving of 100mm\n");
-	move(100, mvdone);
+
+	printf("Initialization : current pos = (0, 0), heading = 0\n");
 	setPosition(0, 0);
 	setHeading(0);
+
+	printf("start moving of 100mm\n");
+	move(100, mvdone);
 
 	while(1) {
 		printf("position [%d,%d], heading >%d°<\n", getPosX(), getPosY(), getHeading());
