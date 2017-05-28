@@ -29,12 +29,12 @@ void mvdone() {
 int main() {
 
 	printf("Initialization : current pos = (0, 0), heading = 0\n");
-	setPosition(0, 0);
+	setPosition(3.14, 1.41);
 	setHeading(0);
 
 	//printf("start moving of 600mm\n");
-	//move(600, mvdone);
-	turn(90, turndone);
+	move(600, mvdone);
+	//turn(90, turndone);
 
 
 	while(1) {
