@@ -2,7 +2,7 @@ TARGET = libmotors.so
 SRCS = motordriver.c motion.c queue.c
 HEADERS = $(addprefix src/, ${SRCS:.c=.h}) src/driver.h
 OBJECTS = $(addprefix build/,${SRCS:.c=.o})
-TESTS = tests/simplemoves tests/absolute
+TESTS = tests/simplemoves tests/absolute tests/moveTo_command_line
 
 CC=gcc
 CFLAGS = -O2 -std=gnu99 -Wall -Werror -fpic
