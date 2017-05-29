@@ -128,8 +128,6 @@ void moveTo(int x, int y, int goalAngle, void (*callback)(void)) {
 	// compute coordinates of the start to end vector
 	int deltaX = x - getPosX(), deltaY = y - getPosY();
 
-	printf("dx= %d, dy = %d\n", deltaX, deltaY);
-
 	// compute heading the robot should have to go to its destination forward
 	int angle = (int) (atan2(deltaY, deltaX)*180.0/M_PI); // - 90
 	while(angle >= 360) angle -= 360;
@@ -151,8 +149,6 @@ void moveTo(int x, int y, int goalAngle, void (*callback)(void)) {
 	if (angle >= 360) angle -= 360;
 
 	moveToDist = forward * sqrt(deltaX * deltaX + deltaY * deltaY);
-	printf("current heading %d\n", getHeading());
-	printf("moveToDist = %d, angle = %d, %d %d\n", moveToDist, moveToAngle, forward * ((int) sqrt(deltaX * deltaX + deltaY * deltaY)), deltaX * deltaX + deltaY * deltaY);
 	moveToCallback = callback;
 	moveToAngle = goalAngle;
 	turn(angle, startRotationDone);
