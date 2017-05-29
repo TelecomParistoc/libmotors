@@ -5,6 +5,8 @@ tests/simplemoves
 tests/absolute
 tests/simpleturn
 tests/moveTo_command_line
+tests/galette
+tests/reset_dir
 ._*
 *.swp
 .pirun.*

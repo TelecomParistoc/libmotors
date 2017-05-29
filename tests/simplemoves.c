@@ -33,12 +33,12 @@ int main() {
 	setHeading(0);
 
 	//printf("start moving of 600mm\n");
-	move(-600, mvdone);
+	move(300, mvdone);
 	//turn(90, turndone);
 
 
 	while(1) {
-		printf("position [%.3f,%.3f], heading >%d°<\n", getPosX(), getPosY(), getHeading());
+		printf("position [%d,%d], heading >%d°<\n", getPosX(), getPosY(), getHeading());
 		printf("relatif : %d\n", getDistance());
 		waitFor(1000);
 	}
