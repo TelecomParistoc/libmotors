@@ -77,6 +77,15 @@ void setGoalDistance(int dist);
 /* make the robot rotate to the given heading (in deg from 0 to 360 counterclockwise) */
 void setGoalHeading(int heading);
 
+/* make robot move until wall */
+void moveToWall();
+/* get if the robot ended its move */
+int isMoveFinished();
+/* set direction when robot goes to wall */
+void setDirectionToWall(int forward);
+/* set orientation after robot reached the wall */
+void setOrientationAfterWall(int heading);
+
 /* stop moving as quick as possible */
 void emergencyStop();
 /* resume movement interrupted by emergencyStop */
