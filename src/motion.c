@@ -9,10 +9,10 @@
 #include "motordriver.h"
 
 // return absolute value of the difference between two angle (0-360)
-#define angleDiff(a, b) (abs(a-b) <= 180 ? abs(a-b) : 360 - abs(a-b))
+#define angleDiff(a, b) (abs(a-b) % 360 <= 180 ? (abs(a-b) % 360) : 360 - (abs(a-b) % 360))
 
-#define DIST_TOLERANCE 8 // mm
-#define ANGLE_TOLERANCE 5 // deg
+#define DIST_TOLERANCE 10 //8 // mm
+#define ANGLE_TOLERANCE 7 //5 // deg
 
 struct pathPoint {
 	int x;
@@ -45,6 +45,7 @@ static void* endOfMoveThread(void* arg) {
 			if(abs(dist-goalDist) <= DIST_TOLERANCE && lastDistance == dist) {
 				void (*toCall)(void) = distCallback;
 				distCallback = NULL;
+				printf("calling callback %p...\n", toCall);
 				toCall();
 				currentDirection = DIR_NONE;
 			}
@@ -65,6 +66,7 @@ static void* endOfMoveThread(void* arg) {
 }
 
 void move(int distance, void (*callback)(void)) {
+	printf("Calling move(%d)\n", distance);
 	if(distance == 0) {
 		currentDirection = DIR_NONE;
 		if(callback != NULL)
@@ -89,6 +91,7 @@ void move(int distance, void (*callback)(void)) {
 }
 
 void turn(int heading, void (*callback)(void)) {
+	printf("Calling turn(%d)\n", heading);
 	goalHeading = heading;
 	headingCallback = callback;
 	setGoalHeading(heading);
@@ -124,28 +127,33 @@ static void startRotationDone() {
 void moveTo(int x, int y, int goalAngle, void (*callback)(void)) {
 	// compute coordinates of the start to end vector
 	int deltaX = x - getPosX(), deltaY = y - getPosY();
+
+	printf("dx= %d, dy = %d\n", deltaX, deltaY);
+
 	// compute heading the robot should have to go to its destination forward
-	double angle = atan2(deltaY, deltaX)*180.0/M_PI - 90;
+	int angle = (int) (atan2(deltaY, deltaX)*180.0/M_PI); // - 90
 	while(angle >= 360) angle -= 360;
 	while(angle < 0) angle += 360;
 
-	if(goalAngle != -1) { // if a goal angle has been specified
-		// decide if robot should be forward or backward, minimizing end rotation
-		if(angleDiff(angle, goalAngle) > 90) {
-			angle = 180 + angle;
-			if(angle >= 360)
-				angle -= 360;
-		}
-	} else { // no goal angle specified : minimize start rotation
-		int heading = getHeading();
-		if(angleDiff(heading, angle) > 90) {
-			angle = 180 + angle;
-			if(angle >= 360)
-				angle -= 360;
-		}
+	//we want to minimize the total rotation (ie the rotation before and after the translation)
+	float current_heading = getHeading();
+	float rotation_if_forward = abs(angleDiff(angle, current_heading));
+	float rotation_if_backward = abs(angleDiff(angle + 180, current_heading));
+	if (goalAngle != -1) {
+		rotation_if_forward += abs(angleDiff(angle, goalAngle));
+		rotation_if_backward += abs(angleDiff(angle + 180, goalAngle));
 	}
+	int forward = (rotation_if_backward < rotation_if_forward ? -1 : +1);
+
 	// save distance and end angle then start to movement
-	moveToDist = sqrt(pow(deltaX, 2) + pow(deltaY, 2));
+	if (forward == -1) angle = angle + 180;
+	if (angle < 0) angle += 360;
+	if (angle >= 360) angle -= 360;
+
+	moveToDist = forward * sqrt(deltaX * deltaX + deltaY * deltaY);
+	printf("current heading %d\n", getHeading());
+	printf("moveToDist = %d, angle = %d, %d %d\n", moveToDist, moveToAngle, forward * ((int) sqrt(deltaX * deltaX + deltaY * deltaY)), deltaX * deltaX + deltaY * deltaY);
+	moveToCallback = callback;
 	moveToAngle = goalAngle;
 	turn(angle, startRotationDone);
 }

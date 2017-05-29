@@ -24,7 +24,7 @@ void setPosition(float x, float y);
  * go backward or forward accordingly. Function is non-blocking.
  *          x : x absolute coordinate in mm
  *          y : y absolute coordinate in mm
- *  goalAngle : final heading at goal location, or -1 if don't care
+ *  goalAngle : final heading ( >= 0 ) at goal location, or -1 if don't care
  *   callback : a function like void f() {...} called when the move is over */
 void moveTo(int x, int y, int goalAngle, void (*callback)(void));
 
