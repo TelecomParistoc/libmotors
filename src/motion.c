@@ -42,9 +42,11 @@ static void* endOfMoveThread(void* arg) {
 	while(1) {
 		if(distCallback != NULL) {
 			int dist = getDistance();
+			printf("thread : %d %d\n", dist, goalDist);
 			if(abs(dist-goalDist) <= DIST_TOLERANCE && lastDistance == dist) {
 				void (*toCall)(void) = distCallback;
 				distCallback = NULL;
+				printf("calling callback %p...\n", toCall);
 				toCall();
 				currentDirection = DIR_NONE;
 			}
@@ -65,6 +67,7 @@ static void* endOfMoveThread(void* arg) {
 }
 
 void move(int distance, void (*callback)(void)) {
+	printf("Calling move(%d)\n", distance);
 	if(distance == 0) {
 		currentDirection = DIR_NONE;
 		if(callback != NULL)
@@ -147,6 +150,7 @@ void moveTo(int x, int y, int goalAngle, void (*callback)(void)) {
 	// save distance and end angle then start to movement
 	moveToDist = sqrt(pow(deltaX, 2) + pow(deltaY, 2));
 	moveToAngle = goalAngle;
+	moveToCallback = callback;
 	turn(angle, startRotationDone);
 }
 
