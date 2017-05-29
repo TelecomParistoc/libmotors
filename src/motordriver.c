@@ -81,7 +81,7 @@ void setGoalHeading(int heading) { I2Cwrite16(MOTOR_ADDR, GOAL_HEADING, heading)
 // make robot move until wall
 void moveToWall()  { I2Cwrite8(MOTOR_ADDR, WALL_TO_RESET, 1); }
 // get if the robot ended its move
-int isMoveFinished() { I2CRead8(MOTOR_ADDR, END_OF_MOVE); }
+int isMoveFinished() {return I2Cread8(MOTOR_ADDR, END_OF_MOVE); }
 // set direction when robot goes to wall
 void setDirectionToWall(int forward) { I2Cwrite8(MOTOR_ADDR, DIRECTION_RESET, forward); }
 // set orientation after robot reached the wall
