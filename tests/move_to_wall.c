@@ -12,11 +12,11 @@ void mvdone() {
 int main() {
 
 	printf("Initialization : current pos = (0, 0), heading = 0\n");
-	setPosition(0, 0);
+	setPosition(100, 100);
 	setHeading(0);
 
 	//printf("start moving until wall\n");
-	moveUntilWall(300, mvdone);
+	moveUntilWall(DIR_BACKWARD, mvdone);
 
 	while(1) {
 		printf("position [%d,%d], heading >%d°<\n", getPosX(), getPosY(), getHeading());

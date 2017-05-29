@@ -29,12 +29,14 @@ void mvdone() {
 int main() {
 
 	printf("Initialization : current pos = (0, 0), heading = 0\n");
-	setPosition(3.14, 1.41);
+	setPosition(100, 100);
 	setHeading(0);
 
 	//printf("start moving of 600mm\n");
-	move(300, mvdone);
+	//move(300, mvdone);
 	//turn(90, turndone);
+
+	moveUntilWall(DIR_BACKWARD, mvdone2);
 
 
 	while(1) {

@@ -13,7 +13,7 @@ void end(){
 }
 
 int main(int argc, char* argv[]) {
-  setPosition(100, 200);
+  setPosition(1000, 1000);
 	setHeading(0);
   waitFor(200);
 	moveTo(strtol(argv[1], NULL, 10), strtol(argv[2], NULL, 10), 0, end);

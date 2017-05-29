@@ -27,6 +27,8 @@ void galette(int nb_part){
 		
 		servi++;
 	}
+	
+	free(used);
 
 }
 
