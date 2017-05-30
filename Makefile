@@ -79,7 +79,7 @@ bigConfig:
 	motorconf write angd 						0
 	motorconf write ldir 						1
 	motorconf write lwheeldir 			1
-	motorconf write rdir 						1
+	motorconf write rdir 						0
 	motorconf write rwheeldir 			0
 
 smallConfig:
