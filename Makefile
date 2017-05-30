@@ -50,6 +50,7 @@ jsinstall:
 
 pythoninstall:
 	cp -a $(PYTHON_DIR)*.py $(PYTHON_PREFIX)
+	sudo python -c 'import os; exec("""for f in [g for g in os.listdir("$(PYTHON_DIR)") if os.path.isfile("$(PYTHON_DIR)" + g) and g[-3:] == ".py"]: content = open("$(PYTHON_PREFIX)" + f, "rb").read().replace("LIBNAME", "\\"$(PREFIX)/lib/$(TARGET)\\""); open("$(PYTHON_PREFIX)" + f, "w+").write(content)""")';
 
 motorconf:
 	mkdir -p $(DESTDIR)$(PREFIX)/lib/node_modules/motorconf
