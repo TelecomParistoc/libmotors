@@ -10,10 +10,13 @@ LDFLAGS= -shared -lwiringPi -lm -lpthread -lrobotutils
 PREFIX = /usr/local
 VPATH = build/
 
+PYTHON_DIR = PythonBinding/
+PYTHON_PREFIX = /usr/local/lib/python2.7/dist-packages/
+
 vpath %.c src/ tests/
 vpath %.h src/
 
-.PHONY: all build clean tests jsinstall motorconf
+.PHONY: all build clean tests jsinstall motorconf pythoninstall
 
 
 all: interface build build/$(TARGET)
@@ -45,6 +48,9 @@ jsinstall:
 	cp -r JSbinding/* $(DESTDIR)$(PREFIX)/lib/node_modules/motors
 	cd $(DESTDIR)$(PREFIX)/lib/node_modules/motors; npm install
 
+pythoninstall:
+	cp -a $(PYTHON_DIR)*.py $(PYTHON_PREFIX)
+
 motorconf:
 	mkdir -p $(DESTDIR)$(PREFIX)/lib/node_modules/motorconf
 	cp -r motorconf/* $(DESTDIR)$(PREFIX)/lib/node_modules/motorconf
@@ -54,7 +60,7 @@ motorconf:
 	cp motorconf/motorconf $(DESTDIR)$(PREFIX)/bin/
 	chmod a+x $(DESTDIR)$(PREFIX)/bin/motorconf
 
-install: build/$(TARGET) jsinstall motorconf
+install: build/$(TARGET) jsinstall motorconf pythoninstall
 	mkdir -p $(DESTDIR)$(PREFIX)/lib
 	mkdir -p $(DESTDIR)$(PREFIX)/include/motors
 	cp build/$(TARGET) $(DESTDIR)$(PREFIX)/lib/
