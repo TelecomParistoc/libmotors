@@ -16,7 +16,7 @@ vpath %.h src/
 .PHONY: all build clean tests jsinstall motorconf
 
 
-all: build build/$(TARGET)
+all: interface build build/$(TARGET)
 
 build:
 	@mkdir -p build
@@ -63,6 +63,14 @@ install: build/$(TARGET) jsinstall motorconf
 	ldconfig
 	ldconfig -p | grep motors
 
+interface:
+	make -C ./i2cInterfaceGenerator
+	./i2cInterfaceGenerator/xml i2c_config.txt
+	mv motorregs.h ./src/
+
+interface_clean:
+	make -C ./i2cInterfaceGenerator clean
+	rm src/motorregs.h
 
 bigConfig:
 	motorconf write wheelsgap 			150
@@ -99,10 +107,5 @@ smallConfig:
 	motorconf write lwheeldir 			0
 	motorconf write rdir 						1
 	motorconf write rwheeldir 			1
-
-
-
-
-
 
 -include $(subst .c,.d,$(SRCS))

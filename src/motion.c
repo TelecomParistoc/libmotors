@@ -46,7 +46,6 @@ static void* endOfMoveThread(void* arg) {
 			if(isMoveFinished()) {
 				void (*toCall)(void) = moveFinishedCallback;
 				moveFinishedCallback = NULL;
-				printf("calling callback %p...\n", toCall);
 				toCall();
 				currentDirection = DIR_NONE;
 			}
@@ -56,7 +55,6 @@ static void* endOfMoveThread(void* arg) {
 			if(abs(dist-goalDist) <= DIST_TOLERANCE && lastDistance == dist) {
 				void (*toCall)(void) = distCallback;
 				distCallback = NULL;
-				printf("calling callback %p...\n", toCall);
 				toCall();
 				currentDirection = DIR_NONE;
 			}
@@ -78,7 +76,7 @@ static void* endOfMoveThread(void* arg) {
 
 void moveUntilWall(int direction, void (*callback)(void)) {
 	printf("Calling moveUntilWall\n");
-	
+
 	if(direction != DIR_FORWARD && direction != DIR_BACKWARD)
 	{
 		printf("ERROR : direction must be DIR_FORWARD (%d) or DIR_BACKWARD (%d), not %d\n", DIR_FORWARD, DIR_BACKWARD, direction);

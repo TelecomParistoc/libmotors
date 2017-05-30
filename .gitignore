@@ -11,3 +11,5 @@ tests/move_to_wall
 ._*
 *.swp
 .pirun.*
+
+src/motorregs.h
