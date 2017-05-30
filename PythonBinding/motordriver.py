@@ -1,4 +1,4 @@
-angularimport ctypes
+import ctypes
 from encapsulate_callback import encapsulate_callback
 
 lib_motors = ctypes.cdll.LoadLibrary(LIBNAME)
