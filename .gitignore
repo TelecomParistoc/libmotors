@@ -1,6 +1,15 @@
 **/.DS_Store
 build/
 tests/motordriver
+tests/simplemoves
+tests/absolute
+tests/simpleturn
+tests/moveTo_command_line
+tests/galette
+tests/reset_dir
+tests/move_to_wall
 ._*
 *.swp
 .pirun.*
+
+src/motorregs.h

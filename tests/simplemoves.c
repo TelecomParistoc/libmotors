@@ -9,25 +9,40 @@ void mvdone2() {
 
 void turndone() {
 	waitFor(1000);
-	printf("start moving of -100mm\n");
-	move(-100, mvdone2);
+	printf("turn completed\n");
+	static int sign = 1;
+	sign *= -1;
+	turn(sign > 0 ? 90 : 270, turndone);
 }
 
 void mvdone() {
+	printf("End of move\n");
 	waitFor(1000);
-	printf("start turning to 90deg\n");
-	turn(90, turndone);
+
+	static int sign = -1;
+	sign *= -1;
+	move(sign * 600, mvdone);
+	//printf("start turning to 90deg\n");
+	//turn(90, turndone);
 }
 
 int main() {
-	printf("start moving of 100mm\n");
-	move(100, mvdone);
-	setPosition(0, 0);
+
+	printf("Initialization : current pos = (0, 0), heading = 0\n");
+	setPosition(100, 100);
 	setHeading(0);
+
+	//printf("start moving of 600mm\n");
+	//move(300, mvdone);
+	//turn(90, turndone);
+
+	moveUntilWall(DIR_BACKWARD, mvdone2);
+
 
 	while(1) {
 		printf("position [%d,%d], heading >%d°<\n", getPosX(), getPosY(), getHeading());
-		waitFor(100);
+		printf("relatif : %d\n", getDistance());
+		waitFor(1000);
 	}
 	return 0;
 }

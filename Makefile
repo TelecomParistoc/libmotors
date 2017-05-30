@@ -2,7 +2,7 @@ TARGET = libmotors.so
 SRCS = motordriver.c motion.c queue.c
 HEADERS = $(addprefix src/, ${SRCS:.c=.h}) src/driver.h
 OBJECTS = $(addprefix build/,${SRCS:.c=.o})
-TESTS = tests/simplemoves tests/absolute
+TESTS = tests/simplemoves tests/absolute tests/galette tests/moveTo_command_line tests/reset_dir tests/move_to_wall
 
 CC=gcc
 CFLAGS = -O2 -std=gnu99 -Wall -Werror -fpic
@@ -16,7 +16,7 @@ vpath %.h src/
 .PHONY: all build clean tests jsinstall motorconf
 
 
-all: build build/$(TARGET)
+all: interface build build/$(TARGET)
 
 build:
 	@mkdir -p build
@@ -62,5 +62,50 @@ install: build/$(TARGET) jsinstall motorconf
 	chmod 0755 $(DESTDIR)$(PREFIX)/lib/$(TARGET)
 	ldconfig
 	ldconfig -p | grep motors
+
+interface:
+	make -C ./i2cInterfaceGenerator
+	./i2cInterfaceGenerator/xml i2c_config.txt
+	mv motorregs.h ./src/
+
+interface_clean:
+	make -C ./i2cInterfaceGenerator clean
+	rm src/motorregs.h
+
+bigConfig:
+	motorconf write wheelsgap 			150
+	motorconf write tickspermeter 	5100
+	motorconf write linacc 					10
+	motorconf write angacc 					50
+	motorconf write linspeed				30
+	motorconf write angspeed 				45
+	motorconf write linp						800
+	motorconf write lini 						0
+	motorconf write lind 						0
+	motorconf write angp						100
+	motorconf write angi 						0
+	motorconf write angd 						0
+	motorconf write ldir 						1
+	motorconf write lwheeldir 			1
+	motorconf write rdir 						0
+	motorconf write rwheeldir 			0
+
+smallConfig:
+	motorconf write wheelsgap 			95
+	motorconf write tickspermeter 	5100
+	motorconf write linacc 					10
+	motorconf write angacc 					50
+	motorconf write linspeed				30
+	motorconf write angspeed 				45
+	motorconf write linp						800
+	motorconf write lini 						0
+	motorconf write lind 						0
+	motorconf write angp						100
+	motorconf write angi 						0
+	motorconf write angd 						0
+	motorconf write ldir 						0
+	motorconf write lwheeldir 			0
+	motorconf write rdir 						1
+	motorconf write rwheeldir 			1
 
 -include $(subst .c,.d,$(SRCS))

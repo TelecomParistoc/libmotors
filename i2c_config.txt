@@ -1,0 +1,8 @@
+XML_INPUT = ./i2cInterface/interface.xml
+
+GEN_DOC = 0
+
+GEN_HEADER = 1
+OUTPUT_HEADER = motorregs.h
+
+GEN_CODE = 0
