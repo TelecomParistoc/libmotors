@@ -10,6 +10,9 @@ lib_motors.setPosition.restype = None
 lib_motors.moveTo.restype = None
 lib_motors.addPointInPath.restype = None
 
+DIR_NONE = 0
+DIR_FORWARD = 1
+DIR_BACKWARD = 2
 
 def check_number(x):
     assert(isinstance(x, int) or isinstance(x, float))
