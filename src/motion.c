@@ -148,16 +148,19 @@ void setPosition(int x, int y) {
 }
 
 static void translationDone() {
+	printf("Translation done!\n");
 	if(moveToAngle != -1)
 		turn(moveToAngle, moveToCallback);
 	else if(moveToCallback != NULL)
 		moveToCallback();
 }
 static void startRotationDone() {
+	printf("rotation done!\n");
 	move(moveToDist, translationDone);
 }
 
 void moveTo(int x, int y, int goalAngle, void (*callback)(void)) {
+	printf("Moving to (%d, %d)\n", x, y);
 	// compute coordinates of the start to end vector
 	int deltaX = x - getPosX(), deltaY = y - getPosY();
 
