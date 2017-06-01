@@ -269,7 +269,7 @@ def emergency_stop():
 
 # Resume the movement interrupted by emergency_stop
 def emergency_resume():
-    lib_motors.emergency_resume()
+    lib_motors.emergencyResume()
 
 def move_to_wall():
     #make sure set_direction_to_wall have been called before!
