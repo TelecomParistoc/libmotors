@@ -1,6 +1,8 @@
 import ctypes
 from encapsulate_callback import encapsulate_callback
 
+from motion import DIR_NONE, DIR_FORWARD, DIR_BACKWARD
+
 lib_motors = ctypes.cdll.LoadLibrary(LIBNAME)
 
 lib_motors.getWheelsGap.restype = ctypes.c_int
@@ -65,6 +67,9 @@ lib_motors.setGoalHeading.restype =  None
 lib_motors.emergencyStop.restype = None
 lib_motors.emergencyResume.restype = None
 
+lib_motors.moveToWall.restype = None
+lib_motors.setDirectionToWall.restype = None
+lib_motors.setOrientationAfterWall.restype = None
 
 # Checks if x is a number (int or float)
 def check_number(x):
@@ -265,3 +270,18 @@ def emergency_stop():
 # Resume the movement interrupted by emergency_stop
 def emergency_resume():
     lib_motors.emergency_resume()
+
+def move_to_wall():
+    #make sure set_direction_to_wall have been called before!
+    lib_motors.moveToWall()
+
+def set_direction_to_wall(direction):
+    if direction != DIR_FORWARD and direction != DIR_BACKWARD:
+        raise ValueError("set_direction_to_wall: direction must be DIR_FORWARD or DIR_BACKWARD")
+    lib_motors.setDirectionToWall(ctypes.c_int(direction))
+
+def set_orientation_after_wall(orientation):
+    check_number(orientation)
+    if orientation < 0 or orientation >= 360:
+        raise ValueError("orientation must be in range [0, 360[")
+    lib_motors.setOrientationAfterWall(ctypes.c_int(orientation))
