@@ -85,7 +85,7 @@ int isMoveFinished() {return I2Cread8(DEVICE_ADDR, TRANSLATION_ENDED_ADDR); }
 // set direction when robot goes to wall
 void setDirectionToWall(int forward) { I2Cwrite8(DEVICE_ADDR, RESET_ORIENTATION_DIRECTION_ADDR, forward); }
 // set orientation after robot reached the wall
-void setOrientationAfterWall(int heading) { I2Cwrite16(DEVICE_ADDR, RESET_ORIENTATION_ORIENTATION_ADDR, heading); }
+void setOrientationAfterWall(int heading) { I2Cwrite16(DEVICE_ADDR, RESET_ORIENTATION_ORIENTATION_ADDR, heading * 16); }
 
 // stop moving as quick as possible
 void emergencyStop() { I2Cwrite8(DEVICE_ADDR, MASTER_STOP_ADDR, 1); }
