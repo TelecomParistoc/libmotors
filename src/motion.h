@@ -18,6 +18,15 @@ int getDirection();
 /* set current absolute location of the robot (x, y in mm) */
 void setPosition(int x, int y);
 
+/* turn toward (x, y), go there then turn to goalAngle. Robot will try to minimize
+ * rotation at the end of the movement so it will go forward or backward accordingly.
+ * If no goalAngle is specified, robot will try to minimize start rotation and
+ * go backward or forward accordingly. Function is non-blocking.
+ *          x : x absolute coordinate in mm
+ *          y : y absolute coordinate in mm
+ *  goalAngle : final heading at goal location, or -1 if don't care
+ *   callback : a function like void f() {...} called when the move is over */
+void moveTo(int x, int y, int goalAngle, void (*callback)(void));
 
 void addPointInPath(int x, int y, int goalAngle, void (*callback)(void));
 
