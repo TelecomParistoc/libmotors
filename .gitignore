@@ -1,0 +1,6 @@
+**/.DS_Store
+build/
+tests/motordriver
+._*
+*.swp
+.pirun.*
