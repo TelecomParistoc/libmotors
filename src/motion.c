@@ -31,7 +31,7 @@ static void (*headingCallback)(void) = NULL;
 static int moveToAngle, moveToDist;
 static void (*moveToCallback)(void) = NULL;
 
-void endOfMoveThread() {
+static void endOfMoveThread() {
 	int lastDistance = 0;
 	int lastHeading = -1;
 
@@ -136,4 +136,36 @@ void moveTo(int x, int y, int goalAngle, void (*callback)(void)) {
 	moveToDist = sqrt(pow(deltaX, 2) + pow(deltaY, 2));
 	moveToAngle = goalAngle;
 	turn(angle, startRotationDone);
+}
+
+// called when a queued move has been completed
+static void queuedMoveDone() {
+	struct pathPoint* lastMove = (struct pathPoint*) getHead();
+	// call move callback if any
+	if(lastMove != NULL && lastMove->callback != NULL)
+		lastMove->callback();
+	removeHead();
+
+	// start next move if any
+	if(getQueueSize() > 0) {
+		struct pathPoint* nextMove = (struct pathPoint*) getHead();
+		moveTo(nextMove->x, nextMove->y, nextMove->goalHeading, queuedMoveDone);
+	}
+}
+
+void addPointInPath(int x, int y, int goalAngle, void (*callback)(void)) {
+	struct pathPoint* newMove = malloc(sizeof(struct pathPoint));
+	newMove->x = x;
+	newMove->y = y;
+	newMove->goalHeading = goalAngle;
+	newMove->callback = callback;
+	// put new move at the tail of the queue
+	addToQueue((void*) newMove);
+	// if newMove is the only item is the queue, start move now
+	if(getQueueSize() == 1)
+		moveTo(x, y, goalAngle, queuedMoveDone);
+}
+
+void clearPath() {
+	clearQueue();
 }

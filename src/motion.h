@@ -28,8 +28,12 @@ void setPosition(int x, int y);
  *   callback : a function like void f() {...} called when the move is over */
 void moveTo(int x, int y, int goalAngle, void (*callback)(void));
 
+/* queue a move to be executed by moveTo (see above for more info). If there's no
+ * previously queued move, start the move directly. */
 void addPointInPath(int x, int y, int goalAngle, void (*callback)(void));
 
+/* removes all queued moves but does not stop current move. Callback of current
+ * move won't be called. */
 void clearPath();
 
 #endif
