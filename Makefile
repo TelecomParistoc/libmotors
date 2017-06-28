@@ -6,7 +6,7 @@ TESTS = tests/motordriver
 JSBINDINGS := $(wildcard JSbinding/*.js)
 CC=gcc
 CFLAGS = -O2 -std=gnu99 -Wall -Werror -fpic
-LDFLAGS= -shared -lwiringPi -lm -lpthread
+LDFLAGS= -shared -lwiringPi -lm -lpthread -lrobotutils
 PREFIX = /usr/local
 VPATH = build/
 

@@ -1,5 +1,5 @@
 #include "motorregs.h"
-#include "i2c-functions.h"
+#include <robotutils.h>
 
 // read/write maximum linear (translating) acceleration
 int  getLinearMaxAcceleration()         { return I2Cread16(MOTOR_ADDR, LIN_MAX_ACC); }

@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#include "timing.h"
+#include <robotutils.h>
 #include "queue.h"
 
 // return absolute value of the difference between two angle (0-360)
@@ -97,6 +97,11 @@ void turn(int heading, void (*callback)(void)) {
 
 int getDirection() {
 	return currentDirection;
+}
+
+void setPosition(int x, int y) {
+	setPosX(x);
+	setPosY(y);
 }
 
 static void translationDone() {

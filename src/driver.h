@@ -3,5 +3,5 @@
  * allowing the programmer to include only this file
  */
 
-#include <robotdriver/motordriver.h>
-#include <robotdriver/motion.h>
+#include <motors/motordriver.h>
+#include <motors/motion.h>
