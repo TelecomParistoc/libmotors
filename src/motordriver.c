@@ -1,6 +1,14 @@
 #include "motorregs.h"
 #include <robotutils.h>
 
+// read/write distance between coding wheels in mm
+int  getWheelsGap()        { return I2Cread16(MOTOR_ADDR, WHEELS_GAP); }
+void setWheelsGap(int gap) { I2Cwrite16(MOTOR_ADDR, WHEELS_GAP, gap); }
+
+// read/write ticks per meter value
+int  getTicksPerMeter()        { return I2Cread16(MOTOR_ADDR, TICKS_PER_M); }
+void setTicksPerMeter(int val) { I2Cwrite16(MOTOR_ADDR, TICKS_PER_M, val); }
+
 // read/write maximum linear (translating) acceleration
 int  getLinearMaxAcceleration()         { return I2Cread16(MOTOR_ADDR, LIN_MAX_ACC); }
 void setLinearMaxAcceleration(int acc)  { I2Cwrite16(MOTOR_ADDR, LIN_MAX_ACC, acc); }

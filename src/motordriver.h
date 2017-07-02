@@ -1,6 +1,14 @@
 #ifndef MOTORDRIVER_H
 #define MOTORDRIVER_H
 
+/* read/write distance between coding wheels in mm */
+int  getWheelsGap();
+void setWheelsGap(int gap);
+
+/* read/write ticks per meter value */
+int  getTicksPerMeter();
+void setTicksPerMeter(int val);
+
 /* read/write maximum linear (translating) acceleration (in mm/s^2) */
 int  getLinearMaxAcceleration();
 void setLinearMaxAcceleration(int acc);
