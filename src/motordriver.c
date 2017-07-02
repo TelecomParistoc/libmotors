@@ -30,6 +30,13 @@ void setAngularI(int angI) { I2Cwrite16(MOTOR_ADDR, ANGULAR_I, angI); }
 int  getAngularD()         { return I2Cread16(MOTOR_ADDR, ANGULAR_D); }
 void setAngularD(int angD) { I2Cwrite16(MOTOR_ADDR, ANGULAR_D, angD); }
 
+// write flash flash stored parameters in flash (waits a bit after issuing the
+// command to allow the write to be done)
+void writeMotorsFlash() {
+	I2Cwrite8(MOTOR_ADDR, WRITE_FLASH, 1);
+	waitFor(100);
+}
+
 // get/set current absolute position x (in mm)
 void setPosX(int x) { I2Cwrite32(MOTOR_ADDR, X_POS, x); }
 int  getPosX()      { return I2Cread32(MOTOR_ADDR, X_POS); }

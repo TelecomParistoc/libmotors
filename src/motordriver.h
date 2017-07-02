@@ -30,6 +30,10 @@ void setAngularI(int angI);
 int  getAngularD();
 void setAngularD(int angD);
 
+/* write flash stored parameters in flash (waits a bit after issuing the
+ * command to allow the write to be done) */
+void writeMotorsFlash();
+
 /* get/set current absolute position x (in mm) */
 int  getPosX();
 void setPosX(int x);

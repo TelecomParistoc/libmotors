@@ -20,6 +20,7 @@ void cb1() {
 int main() {
 	printf("go to (200, 200)\n");
 	setPosition(0, 0);
+	setHeading(0);
 	moveTo(200, 200, -1, cb1);
 
 	while(1) {
