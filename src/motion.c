@@ -1,9 +1,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
-
 #include <robotutils.h>
+#include <pthread.h>
+
 #include "queue.h"
+#include "motion.h"
+#include "motordriver.h"
 
 // return absolute value of the difference between two angle (0-360)
 #define angleDiff(a, b) (abs(a-b) <= 180 ? abs(a-b) : 360 - abs(a-b))
@@ -14,7 +17,7 @@
 struct pathPoint {
 	int x;
 	int y;
-	int goal_heading;
+	int goalHeading;
 	void (*callback)(void);
 };
 
@@ -31,7 +34,7 @@ static void (*headingCallback)(void) = NULL;
 static int moveToAngle, moveToDist;
 static void (*moveToCallback)(void) = NULL;
 
-static void endOfMoveThread() {
+static void* endOfMoveThread(void* arg) {
 	int lastDistance = 0;
 	int lastHeading = -1;
 
@@ -55,6 +58,7 @@ static void endOfMoveThread() {
 		}
 		waitFor(200);
 	}
+	return NULL;
 }
 
 void move(int distance, void (*callback)(void)) {

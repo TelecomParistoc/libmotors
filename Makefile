@@ -1,8 +1,8 @@
 TARGET = libmotors.so
-SRCS = i2c-functions.c timing.c motordriver.c motion.c queue.c
+SRCS = motordriver.c motion.c queue.c
 HEADERS = $(addprefix src/, ${SRCS:.c=.h}) src/driver.h
 OBJECTS = $(addprefix build/,${SRCS:.c=.o})
-TESTS = tests/motordriver
+TESTS = tests/simplemoves
 JSBINDINGS := $(wildcard JSbinding/*.js)
 CC=gcc
 CFLAGS = -O2 -std=gnu99 -Wall -Werror -fpic
@@ -33,8 +33,8 @@ build/$(TARGET): $(OBJECTS)
 tests: LDFLAGS=-lmotors
 tests: $(TESTS)
 
-tests/%: tests/%.o $(OBJECTS)
-	$(CC) $(LDFLAGS_EXE) $^ -o $@
+tests/%: tests/%.o
+	$(CC) $(LDFLAGS) $^ -o $@
 
 clean:
 	rm -f build/*.o build/*.so build/*.d
