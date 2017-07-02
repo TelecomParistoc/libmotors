@@ -95,6 +95,7 @@ Get the robot linear PID D coefficient.
 #### motors.linear.d(coeff) ####
 Set the robot linear PID D coefficient.
 
+----------------------------------------
 
 #### motors.writeFlash() ####
 Write configuration in flash, it will be automatically reloaded at reset.
@@ -134,6 +135,8 @@ collision with another robot.
 
 #### motors.resume() ####
 Resume move interrupted by motors.stop().
+
+----------------------------------------
 
 #### motors.position(x, y) ####
 Set robot position, x and y in mm.
