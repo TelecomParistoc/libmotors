@@ -1,0 +1,170 @@
+{
+  "getWheelsGap": [
+    "int",
+    []
+  ],
+  "setWheelsGap": [
+    "void",
+    [
+      "int"
+    ]
+  ],
+  "getTicksPerMeter": [
+    "int",
+    []
+  ],
+  "setTicksPerMeter": [
+    "void",
+    [
+      "int"
+    ]
+  ],
+  "getLinearMaxAcceleration": [
+    "int",
+    []
+  ],
+  "setLinearMaxAcceleration": [
+    "void",
+    [
+      "int"
+    ]
+  ],
+  "getAngularMaxAcceleration": [
+    "int",
+    []
+  ],
+  "setAngularMaxAcceleration": [
+    "void",
+    [
+      "int"
+    ]
+  ],
+  "getLinearCruiseSpeed": [
+    "int",
+    []
+  ],
+  "setLinearCruiseSpeed": [
+    "void",
+    [
+      "int"
+    ]
+  ],
+  "getAngularCruiseSpeed": [
+    "int",
+    []
+  ],
+  "setAngularCruiseSpeed": [
+    "void",
+    [
+      "int"
+    ]
+  ],
+  "getLinearP": [
+    "int",
+    []
+  ],
+  "setLinearP": [
+    "void",
+    [
+      "int"
+    ]
+  ],
+  "getLinearI": [
+    "int",
+    []
+  ],
+  "setLinearI": [
+    "void",
+    [
+      "int"
+    ]
+  ],
+  "getAngularP": [
+    "int",
+    []
+  ],
+  "setAngularP": [
+    "void",
+    [
+      "int"
+    ]
+  ],
+  "getAngularI": [
+    "int",
+    []
+  ],
+  "setAngularI": [
+    "void",
+    [
+      "int"
+    ]
+  ],
+  "getAngularD": [
+    "int",
+    []
+  ],
+  "setAngularD": [
+    "void",
+    [
+      "int"
+    ]
+  ],
+  "writeMotorsFlash": [
+    "void",
+    []
+  ],
+  "getPosX": [
+    "int",
+    []
+  ],
+  "setPosX": [
+    "void",
+    [
+      "int"
+    ]
+  ],
+  "getPosY": [
+    "int",
+    []
+  ],
+  "setPosY": [
+    "void",
+    [
+      "int"
+    ]
+  ],
+  "getHeading": [
+    "int",
+    []
+  ],
+  "setHeading": [
+    "void",
+    [
+      "int"
+    ]
+  ],
+  "getDistance": [
+    "int",
+    []
+  ],
+  "setGoalDistance": [
+    "void",
+    [
+      "int"
+    ]
+  ],
+  "setGoalHeading": [
+    "void",
+    [
+      "int"
+    ]
+  ],
+  "emergencyStop": [
+    "void",
+    []
+  ],
+  "emergencyResume": [
+    "void",
+    []
+  ]
+}

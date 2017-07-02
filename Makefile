@@ -3,7 +3,7 @@ SRCS = motordriver.c motion.c queue.c
 HEADERS = $(addprefix src/, ${SRCS:.c=.h}) src/driver.h
 OBJECTS = $(addprefix build/,${SRCS:.c=.o})
 TESTS = tests/simplemoves
-JSBINDINGS := $(wildcard JSbinding/*.js)
+
 CC=gcc
 CFLAGS = -O2 -std=gnu99 -Wall -Werror -fpic
 LDFLAGS= -shared -lwiringPi -lm -lpthread -lrobotutils
@@ -41,12 +41,12 @@ clean:
 	rm -f $(TESTS)
 	rm -f tests/*.o
 
-jsinstall: $(JSBINDINGS) JSbinding/package.json
+jsinstall:
 	mkdir -p $(DESTDIR)$(PREFIX)/lib/node_modules/motors
 	cp -r JSbinding/* $(DESTDIR)$(PREFIX)/lib/node_modules/motors
 	cd $(DESTDIR)$(PREFIX)/lib/node_modules/motors; npm install
 
-install: build/$(TARGET)
+install: build/$(TARGET) jsinstall
 	mkdir -p $(DESTDIR)$(PREFIX)/lib
 	mkdir -p $(DESTDIR)$(PREFIX)/include/motors
 	cp build/$(TARGET) $(DESTDIR)$(PREFIX)/lib/

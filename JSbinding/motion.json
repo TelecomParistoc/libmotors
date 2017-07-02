@@ -1,0 +1,49 @@
+{
+  "move": [
+    "void",
+    [
+      "int",
+      "void"
+    ]
+  ],
+  "turn": [
+    "void",
+    [
+      "int",
+      "void"
+    ]
+  ],
+  "getDirection": [
+    "int",
+    []
+  ],
+  "setPosition": [
+    "void",
+    [
+      "int",
+      "int"
+    ]
+  ],
+  "moveTo": [
+    "void",
+    [
+      "int",
+      "int",
+      "int",
+      "void"
+    ]
+  ],
+  "addPointInPath": [
+    "void",
+    [
+      "int",
+      "int",
+      "int",
+      "void"
+    ]
+  ],
+  "clearPath": [
+    "void",
+    []
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "motordriver",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "ffi": "^2.0.0",
+  },
+  "main":"./motors.js"
+}
