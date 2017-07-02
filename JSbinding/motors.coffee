@@ -70,7 +70,7 @@ module.exports =
 	resume: motordriver.emergencyResume
 
 	######## motion.h functions ########
-	position: motion.setPositiong
+	position: motion.setPosition
 	move: (dist, callback) ->
 		moveCallback = unusedCallback
 		moveCallback = ffi.Callback('void', [], callback) if callback?
