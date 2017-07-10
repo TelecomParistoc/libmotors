@@ -149,7 +149,7 @@ distance in mm. callback is called when final position has been reached.
 Turn to given absolute heading from 0 to 360 counterclockwise. Callback is
 called when final heading has been reached.
 
-#### motor.moveTo(x, y, goalHeading, callback) ####
+#### motors.moveTo(x, y, goalHeading, callback) ####
 turn toward (x, y), go there then turn to goalAngle. Robot will try to minimize
 rotation at the end of the movement so it will go forward or backward accordingly.
 If no goalAngle is specified, robot will try to minimize start rotation and

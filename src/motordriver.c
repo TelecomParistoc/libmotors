@@ -52,7 +52,7 @@ int  getPosX()      { return I2Cread32(MOTOR_ADDR, X_POS); }
 void setPosY(int y) { I2Cwrite32(MOTOR_ADDR, Y_POS, y); }
 int  getPosY()      { return I2Cread32(MOTOR_ADDR, Y_POS); }
 // get/set current heading (in deg from 0 to 360 counterclockwise)
-int getHeading()  { return I2Cread32(MOTOR_ADDR, HEADING); }
+int getHeading()  { return I2Cread16(MOTOR_ADDR, HEADING); }
 void setHeading(int heading) { I2Cwrite16(MOTOR_ADDR, HEADING, heading); }
 // get distance robot has moved since last reset (in mm)
 int getDistance() { return I2Cread32(MOTOR_ADDR, DIST); }

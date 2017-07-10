@@ -69,9 +69,9 @@ void move(int distance, void (*callback)(void)) {
 		return;
 	}
 
-	goalDist = getDistance() + distance;
+	goalDist = distance;
 	distCallback = callback;
-	setGoalDistance(goalDist);
+	setGoalDistance(distance);
 
 	// if a callback has been specified, start endOfMoveThread if not started yet
 	if(callback != NULL && !eomThreadStarted) {

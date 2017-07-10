@@ -30,7 +30,7 @@ build/$(TARGET): $(OBJECTS)
 	@echo "\nLinking target $@"
 	@$(CC) $(CFLAGS) $(OBJECTS) -o $@ $(LDFLAGS)
 
-tests: LDFLAGS=-lmotors
+tests: LDFLAGS=-lmotors -lrobotutils
 tests: $(TESTS)
 
 tests/%: tests/%.o
