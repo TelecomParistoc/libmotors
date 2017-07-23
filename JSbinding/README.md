@@ -26,10 +26,10 @@ Get the programmed distance between the coding wheels in mm.
 Set the distance between the coding wheels in mm.
 
 #### motors.ticksPerMeter() ####
-Get the programmed number of coding wheel ticks when robot 1 meter in a straight line.
+Get the programmed number of coding wheel ticks when the robot moves forward of 1 meter in a straight line.
 
 #### motors.ticksPerMeter(ticks) ####
-Set the number of coding wheel ticks when robot 1 meter in a straight line.
+Set the number of coding wheel ticks when the robot moves forward of 1 meter in a straight line.
 
 ### motors.angular ###
 
@@ -98,7 +98,7 @@ Set the robot linear PID D coefficient.
 ----------------------------------------
 
 #### motors.writeFlash() ####
-Write configuration in flash, it will be automatically reloaded at reset.
+Write current configuration in flash, it will be automatically reloaded at reset.
 
 #### motors.x() ####
 Get robot position x coordinate in mm.
