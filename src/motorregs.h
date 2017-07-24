@@ -43,7 +43,7 @@
 // ################  RAM REGISTERS  ################
 
 // write PID coefficients in flash (8 bits)
-#define WRITE_FLASH       0x20
+#define WRITE_FLASH       0x30
 
 // Current x absolute position in mm (32 bits)
 #define X_POS             0x80
