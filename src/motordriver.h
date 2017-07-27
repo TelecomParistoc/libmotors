@@ -38,6 +38,24 @@ void setAngularI(int angI);
 int  getAngularD();
 void setAngularD(int angD);
 
+/* read/write motor configuration */
+int  getMotorLeftForwardSense();
+void setMotorLeftForwardSense(int sense);
+int  getMotorRightForwardSense();
+void setMotorRightForwardSense(int sense);
+
+/* read/write coding wheels config */
+int  getCodingWheelLeftInitialTicks();
+void setCodingWheelLeftInitialTicks(int ticks);
+int  getCodingWheelRightInitialTicks();
+void setCodingWheelRightInitialTicks(int ticks);
+
+int  getCodingWheelLeftOrientation();
+void setCodingWheelLeftOrientation(int orientation);
+int  getCodingWheelRightOrientation();
+void setCodingWheelRightOrientation(int orientation);
+
+
 /* write flash stored parameters in flash (waits a bit after issuing the
  * command to allow the write to be done) */
 void writeMotorsFlash();
