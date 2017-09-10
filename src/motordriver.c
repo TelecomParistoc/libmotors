@@ -38,6 +38,24 @@ void setAngularI(int angI) { I2Cwrite16(MOTOR_ADDR, ANGULAR_I, angI); }
 int  getAngularD()         { return I2Cread16(MOTOR_ADDR, ANGULAR_D); }
 void setAngularD(int angD) { I2Cwrite16(MOTOR_ADDR, ANGULAR_D, angD); }
 
+// read/write motor configuration
+int  getMotorLeftForwardSense()          { return I2Cread8(MOTOR_ADDR, MOTOR_LEFT_FORWARD_SENSE); }
+void setMotorLeftForwardSense(int sense) { I2Cwrite16(MOTOR_ADDR, MOTOR_LEFT_FORWARD_SENSE, sense); }
+int  getMotorRightForwardSense()          { return I2Cread8(MOTOR_ADDR, MOTOR_RIGHT_FORWARD_SENSE); }
+void setMotorRightForwardSense(int sense) { I2Cwrite16(MOTOR_ADDR, MOTOR_RIGHT_FORWARD_SENSE, sense); }
+
+// read/write coding wheels config
+int  getCodingWheelLeftInitialTicks()          { return I2Cread32(MOTOR_ADDR, CODING_WHEEL_LEFT_INITIAL_TICKS); }
+void setCodingWheelLeftInitialTicks(int ticks) { I2Cwrite32(MOTOR_ADDR, CODING_WHEEL_LEFT_INITIAL_TICKS, ticks); }
+int  getCodingWheelRightInitialTicks()          { return I2Cread32(MOTOR_ADDR, CODING_WHEEL_RIGHT_INITIAL_TICKS); }
+void setCodingWheelRightInitialTicks(int ticks) { I2Cwrite32(MOTOR_ADDR, CODING_WHEEL_RIGHT_INITIAL_TICKS, ticks); }
+
+int  getCodingWheelLeftOrientation()                { return I2Cread8(MOTOR_ADDR, CODING_WHEEL_LEFT_ORIENTATION); }
+void setCodingWheelLeftOrientation(int orientation) { I2Cwrite8(MOTOR_ADDR, CODING_WHEEL_LEFT_ORIENTATION, orientation); }
+int  getCodingWheelRightOrientation()                { return I2Cread8(MOTOR_ADDR, CODING_WHEEL_RIGHT_ORIENTATION); }
+void setCodingWheelRightOrientation(int orientation) { I2Cwrite8(MOTOR_ADDR, CODING_WHEEL_RIGHT_ORIENTATION, orientation); }
+
+
 // write flash flash stored parameters in flash (waits a bit after issuing the
 // command to allow the write to be done)
 void writeMotorsFlash() {

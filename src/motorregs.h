@@ -39,6 +39,16 @@
 // Angular d coefficient
 #define ANGULAR_D         0x18
 
+// Motor left forward sense
+#define MOTOR_LEFT_FORWARD_SENSE 0x1A
+// Motor right forward sense
+#define MOTOR_RIGHT_FORWARD_SENSE 0x1B
+
+#define CODING_WHEEL_LEFT_INITIAL_TICKS 0x1C
+#define CODING_WHEEL_RIGHT_INITIAL_TICKS 0x20
+
+#define CODING_WHEEL_LEFT_ORIENTATION 0x24
+#define CODING_WHEEL_RIGHT_ORIENTATION 0x25
 
 // ################  RAM REGISTERS  ################
 
