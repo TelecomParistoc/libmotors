@@ -28,8 +28,8 @@ int  getLinearP();
 void setLinearP(int linP);
 int  getLinearI();
 void setLinearI(int linI);
-int  getLinearP();
-void setLinearP(int linD);
+int  getLinearD();
+void setLinearD(int linD);
 /* read/write angular PID coefficients */
 int  getAngularP();
 void setAngularP(int angP);

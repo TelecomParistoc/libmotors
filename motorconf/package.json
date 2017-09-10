@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/TelecomParistoc/libmotors#readme",
   "dependencies": {
-    "commander": "^2.9.0",
+    "commander": "^2.9.0"
   }
 }

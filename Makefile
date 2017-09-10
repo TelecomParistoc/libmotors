@@ -49,6 +49,7 @@ motorconf:
 	mkdir -p $(DESTDIR)$(PREFIX)/lib/node_modules/motorconf
 	cp -r motorconf/* $(DESTDIR)$(PREFIX)/lib/node_modules/motorconf
 	cd $(DESTDIR)$(PREFIX)/lib/node_modules/motorconf; npm install
+	rm -f $(DESTDIR)$(PREFIX)/lib/node_modules/motorconf/node_modules/motors
 	ln -s $(DESTDIR)$(PREFIX)/lib/node_modules/motors $(DESTDIR)$(PREFIX)/lib/node_modules/motorconf/node_modules/motors
 	cp motorconf/motorconf $(DESTDIR)$(PREFIX)/bin/
 	chmod a+x $(DESTDIR)$(PREFIX)/bin/motorconf

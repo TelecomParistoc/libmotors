@@ -11,8 +11,8 @@
 // return absolute value of the difference between two angle (0-360)
 #define angleDiff(a, b) (abs(a-b) <= 180 ? abs(a-b) : 360 - abs(a-b))
 
-#define DIST_TOLERANCE 3 // mm
-#define ANGLE_TOLERANCE 2 // deg
+#define DIST_TOLERANCE 8 // mm
+#define ANGLE_TOLERANCE 5 // deg
 
 struct pathPoint {
 	int x;

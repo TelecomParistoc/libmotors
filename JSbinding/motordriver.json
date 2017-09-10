@@ -79,6 +79,16 @@
       "int"
     ]
   ],
+  "getLinearD": [
+    "int",
+    []
+  ],
+  "setLinearD": [
+    "void",
+    [
+      "int"
+    ]
+  ],
   "getAngularP": [
     "int",
     []
@@ -104,6 +114,66 @@
     []
   ],
   "setAngularD": [
+    "void",
+    [
+      "int"
+    ]
+  ],
+  "getMotorLeftForwardSense": [
+    "int",
+    []
+  ],
+  "setMotorLeftForwardSense": [
+    "void",
+    [
+      "int"
+    ]
+  ],
+  "getMotorRightForwardSense": [
+    "int",
+    []
+  ],
+  "setMotorRightForwardSense": [
+    "void",
+    [
+      "int"
+    ]
+  ],
+  "getCodingWheelLeftInitialTicks": [
+    "int",
+    []
+  ],
+  "setCodingWheelLeftInitialTicks": [
+    "void",
+    [
+      "int"
+    ]
+  ],
+  "getCodingWheelRightInitialTicks": [
+    "int",
+    []
+  ],
+  "setCodingWheelRightInitialTicks": [
+    "void",
+    [
+      "int"
+    ]
+  ],
+  "getCodingWheelLeftOrientation": [
+    "int",
+    []
+  ],
+  "setCodingWheelLeftOrientation": [
+    "void",
+    [
+      "int"
+    ]
+  ],
+  "getCodingWheelRightOrientation": [
+    "int",
+    []
+  ],
+  "setCodingWheelRightOrientation": [
     "void",
     [
       "int"

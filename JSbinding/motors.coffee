@@ -1,6 +1,6 @@
 ffi = require 'ffi'
-motordriver = require('./headerloader.coffee')('libmotors', 'motordriver.json')
-motion = require('./headerloader.coffee')('libmotors', 'motion.json')
+motordriver = require('./headerloader.js')('libmotors', 'motordriver.json')
+motion = require('./headerloader.js')('libmotors', 'motion.json')
 
 moveCallback = null
 turnCallback = null
