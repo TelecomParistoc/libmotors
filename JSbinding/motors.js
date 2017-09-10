@@ -4,9 +4,9 @@
 
   ffi = require('ffi');
 
-  motordriver = require('./headerloader.js')('libmotors', 'motordriver.json');
+  motordriver = require('./headerloader.js')('libmotors', __dirname + '/motordriver.json');
 
-  motion = require('./headerloader.js')('libmotors', 'motion.json');
+  motion = require('./headerloader.js')('libmotors', __dirname + '/motion.json');
 
   moveCallback = null;
 
@@ -32,6 +32,46 @@
         motordriver.setTicksPerMeter(val);
       }
       return motordriver.getTicksPerMeter();
+    },
+    left: {
+      motorDirection: function(val) {
+        if (typeof val === 'number') {
+          motordriver.setMotorLeftForwardSense(val);
+        }
+        return motordriver.getMotorLeftForwardSense();
+      },
+      wheelDirection: function(val) {
+        if (typeof val === 'number') {
+          motordriver.setCodingWheelLeftOrientation(val);
+        }
+        return motordriver.getCodingWheelLeftOrientation();
+      },
+      wheelOffset: function(val) {
+        if (typeof val === 'number') {
+          motordriver.setCodingWheelLeftInitialTicks(val);
+        }
+        return motordriver.getCodingWheelLeftInitialTicks();
+      }
+    },
+    right: {
+      motorDirection: function(val) {
+        if (typeof val === 'number') {
+          motordriver.setMotorRightForwardSense(val);
+        }
+        return motordriver.getMotorRightForwardSense();
+      },
+      wheelDirection: function(val) {
+        if (typeof val === 'number') {
+          motordriver.setCodingWheelRightOrientation(val);
+        }
+        return motordriver.getCodingWheelRightOrientation();
+      },
+      wheelOffset: function(val) {
+        if (typeof val === 'number') {
+          motordriver.setCodingWheelRightInitialTicks(val);
+        }
+        return motordriver.getCodingWheelRightInitialTicks();
+      }
     },
     angular: {
       acceleration: function(val) {

@@ -1,6 +1,6 @@
 ffi = require 'ffi'
-motordriver = require('./headerloader.js')('libmotors', 'motordriver.json')
-motion = require('./headerloader.js')('libmotors', 'motion.json')
+motordriver = require('./headerloader.js')('libmotors', __dirname + '/motordriver.json')
+motion = require('./headerloader.js')('libmotors', __dirname + '/motion.json')
 
 moveCallback = null
 turnCallback = null
@@ -17,7 +17,26 @@ module.exports =
 	ticksPerMeter: (val) ->
 		motordriver.setTicksPerMeter(val) if typeof val is 'number'
 		return motordriver.getTicksPerMeter()
-
+	left:
+		motorDirection: (val) ->
+			motordriver.setMotorLeftForwardSense(val) if typeof val is 'number'
+			return motordriver.getMotorLeftForwardSense()
+		wheelDirection: (val) ->
+			motordriver.setCodingWheelLeftOrientation(val) if typeof val is 'number'
+			return motordriver.getCodingWheelLeftOrientation()
+		wheelOffset: (val) ->
+			motordriver.setCodingWheelLeftInitialTicks(val) if typeof val is 'number'
+			return motordriver.getCodingWheelLeftInitialTicks()
+	right:
+		motorDirection: (val) ->
+			motordriver.setMotorRightForwardSense(val) if typeof val is 'number'
+			return motordriver.getMotorRightForwardSense()
+		wheelDirection: (val) ->
+			motordriver.setCodingWheelRightOrientation(val) if typeof val is 'number'
+			return motordriver.getCodingWheelRightOrientation()
+		wheelOffset: (val) ->
+			motordriver.setCodingWheelRightInitialTicks(val) if typeof val is 'number'
+			return motordriver.getCodingWheelRightInitialTicks()
 	angular:
 		acceleration: (val) ->
 			motordriver.setAngularMaxAcceleration(val) if typeof val is 'number'

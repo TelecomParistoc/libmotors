@@ -14,6 +14,12 @@ parameters =
 	angp: motors.angular.p
 	angi: motors.angular.i
 	angd: motors.angular.d
+	ldir: motors.left.motorDirection
+	lwheeldir: motors.left.wheelDirection
+	lwheeloffset: motors.left.wheelOffset
+	rdir: motors.right.motorDirection
+	rwheeldir: motors.right.wheelDirection
+	rwheeloffset: motors.right.wheelOffset
 
 program
 	.version('0.1.0')
@@ -38,7 +44,8 @@ program
 		console.log '                  and "read" to get the current parameter value'
 		console.log '   <parameter> : a parameter name among : '
 		console.log '                  wheelsgap, tickspermeter, linacc, angacc, linspeed, angspeed,'
-		console.log '                  linp, lini, lind, angp, angi, angd'
+		console.log '                  linp, lini, lind, angp, angi, angd, ldir, lwheeldir, lwheeloffset,'
+		console.log '                  rdir, rwheeldir, rwheeloffset'
 		console.log '   [value]     : required for write, ignored for read : new parameter value'
 		console.log ''
 	.parse process.argv
