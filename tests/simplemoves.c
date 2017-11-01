@@ -14,9 +14,10 @@ void turndone() {
 }
 
 void mvdone() {
-	waitFor(1000);
-	printf("start turning to 90deg\n");
-	turn(90, turndone);
+	printf("End of move\n");
+	//waitFor(1000);
+	//printf("start turning to 90deg\n");
+	//turn(90, turndone);
 }
 
 int main() {
