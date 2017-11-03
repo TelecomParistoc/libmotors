@@ -42,8 +42,9 @@ static void* endOfMoveThread(void* arg) {
 		if(distCallback != NULL) {
 			int dist = getDistance();
 			if(abs(dist-goalDist) <= DIST_TOLERANCE && lastDistance == dist) {
-				distCallback();
+				void (*toCall)(void) = distCallback;
 				distCallback = NULL;
+				toCall();
 				currentDirection = DIR_NONE;
 			}
 			lastDistance = dist;

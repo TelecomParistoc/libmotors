@@ -27,7 +27,7 @@ int main() {
 	setHeading(0);
 
 	printf("start moving of 100mm\n");
-	move(100, mvdone);
+	move(600, mvdone);
 
 	while(1) {
 		printf("position [%d,%d], heading >%d°<\n", getPosX(), getPosY(), getHeading());
