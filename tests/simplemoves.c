@@ -15,7 +15,11 @@ void turndone() {
 
 void mvdone() {
 	printf("End of move\n");
-	//waitFor(1000);
+	waitFor(1000);
+
+	static int sign = 1;
+	sign *= -1;
+	move(sign * 600, mvdone);
 	//printf("start turning to 90deg\n");
 	//turn(90, turndone);
 }
@@ -31,7 +35,7 @@ int main() {
 
 	while(1) {
 		printf("position [%d,%d], heading >%d°<\n", getPosX(), getPosY(), getHeading());
-		waitFor(100);
+		waitFor(1000);
 	}
 	return 0;
 }
