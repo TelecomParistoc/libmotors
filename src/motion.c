@@ -55,7 +55,6 @@ static void* endOfMoveThread(void* arg) {
 		}
 		if(headingCallback != NULL) {
 			int heading = getHeading();
-			printf("heading = %d, goal heading = %d, angle diff = %d\n", heading, goalHeading, angleDiff(heading, goalHeading));
 			if(angleDiff(heading, goalHeading) <= ANGLE_TOLERANCE && lastHeading == heading) {
 				toCall = headingCallback;
 				headingCallback = NULL;
