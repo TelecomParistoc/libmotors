@@ -9,8 +9,10 @@ void mvdone2() {
 
 void turndone() {
 	waitFor(1000);
-	printf("start moving of -100mm\n");
-	move(-100, mvdone2);
+	printf("turn completed\n");
+	static int sign = 1;
+	sign *= -1;
+	turn(sign > 0 ? 90 : 270, turndone);
 }
 
 void mvdone() {
@@ -30,8 +32,10 @@ int main() {
 	setPosition(0, 0);
 	setHeading(0);
 
-	printf("start moving of 600mm\n");
-	move(600, mvdone);
+	//printf("start moving of 600mm\n");
+	//move(600, mvdone);
+	turn(90, turndone);
+
 
 	while(1) {
 		printf("position [%d,%d], heading >%d°<\n", getPosX(), getPosY(), getHeading());
