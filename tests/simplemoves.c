@@ -30,7 +30,7 @@ int main() {
 	setPosition(0, 0);
 	setHeading(0);
 
-	printf("start moving of 100mm\n");
+	printf("start moving of 600mm\n");
 	move(600, mvdone);
 
 	while(1) {

@@ -35,13 +35,16 @@ static int moveToAngle, moveToDist;
 static void (*moveToCallback)(void) = NULL;
 
 static void* endOfMoveThread(void* arg) {
+	//variables to know whether the robot is moving
 	int lastDistance = 0;
 	int lastHeading = -1;
 
 	while(1) {
 		if(distCallback != NULL) {
 			int dist = getDistance();
+
 			if(abs(dist-goalDist) <= DIST_TOLERANCE && lastDistance == dist) {
+				//the callback can (or not) modify distCallback
 				void (*toCall)(void) = distCallback;
 				distCallback = NULL;
 				toCall();
