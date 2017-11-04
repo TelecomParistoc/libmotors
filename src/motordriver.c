@@ -64,8 +64,8 @@ void writeMotorsFlash() {
 }
 
 // get/set current absolute position x (in mm)
-void setPosX(int x) { I2Cwrite32(MOTOR_ADDR, X_POS, x); }
-int  getPosX()      { return I2Cread32(MOTOR_ADDR, X_POS); }
+void setPosX(float x) { I2CwriteFloat(MOTOR_ADDR, X_POS, x); }
+float  getPosX()      { return I2CreadFloat(MOTOR_ADDR, X_POS); }
 // get/set current absolute position y (in mm)
 void setPosY(int y) { I2Cwrite32(MOTOR_ADDR, Y_POS, y); }
 int  getPosY()      { return I2Cread32(MOTOR_ADDR, Y_POS); }
