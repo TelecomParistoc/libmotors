@@ -35,18 +35,14 @@ static int moveToAngle, moveToDist;
 static void (*moveToCallback)(void) = NULL;
 
 static void* endOfMoveThread(void* arg) {
-	//variables to know whether the robot is moving / turning
 	int lastDistance = 0;
 	int lastHeading = -1;
-	//the callback can (or not) modify distCallback
-	void (*toCall)(void) = NULL;
 
 	while(1) {
 		if(distCallback != NULL) {
 			int dist = getDistance();
-
 			if(abs(dist-goalDist) <= DIST_TOLERANCE && lastDistance == dist) {
-				toCall = distCallback;
+				void (*toCall)(void) = distCallback;
 				distCallback = NULL;
 				toCall();
 				currentDirection = DIR_NONE;
@@ -56,9 +52,8 @@ static void* endOfMoveThread(void* arg) {
 		if(headingCallback != NULL) {
 			int heading = getHeading();
 			if(angleDiff(heading, goalHeading) <= ANGLE_TOLERANCE && lastHeading == heading) {
-				toCall = headingCallback;
+				headingCallback();
 				headingCallback = NULL;
-				toCall();
 			}
 			lastHeading = heading;
 		}
@@ -92,17 +87,9 @@ void move(int distance, void (*callback)(void)) {
 }
 
 void turn(int heading, void (*callback)(void)) {
-
-	if (heading < 0 || heading >= 360) {
-		printf("ERROR  in function turn : heading must be in range [0, 359]; (given = %d)\n",
-						heading);
-		return;
-	}
 	goalHeading = heading;
 	headingCallback = callback;
 	setGoalHeading(heading);
-
-	printf("Heading set to %d\n", heading);
 
 	// if a callback has been specified, start endOfMoveThread if not started yet
 	if(callback != NULL && !eomThreadStarted) {
@@ -117,7 +104,7 @@ int getDirection() {
 	return currentDirection;
 }
 
-void setPosition(int x, int y) {
+void setPosition(float x, float y) {
 	setPosX(x);
 	setPosY(y);
 }

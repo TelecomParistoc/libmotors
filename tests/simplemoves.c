@@ -38,7 +38,7 @@ int main() {
 
 
 	while(1) {
-		printf("position [%d,%d], heading >%d°<\n", getPosX(), getPosY(), getHeading());
+		printf("position [%.3f,%.3f], heading >%d°<\n", getPosX(), getPosY(), getHeading());
 		waitFor(1000);
 	}
 	return 0;
