@@ -106,7 +106,7 @@ int getDirection() {
 	return currentDirection;
 }
 
-void setPosition(int x, int y) {
+void setPosition(float x, float y) {
 	setPosX(x);
 	setPosY(y);
 }

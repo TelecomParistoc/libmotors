@@ -19,12 +19,12 @@ void cb1() {
 
 int main() {
 	printf("go to (200, 200)\n");
-	setPosition(0, 0);
+	setPosition(1.41, 3.14159);
 	setHeading(0);
 	moveTo(200, 200, -1, cb1);
 
 	while(1) {
-		printf("position [%d,%d], heading >%d°<\n", getPosX(), getPosY(), getHeading());
+		printf("position [%.3f,%.3f], heading >%d°<\n", getPosX(), getPosY(), getHeading());
 		waitFor(100);
 	}
 	return 0;

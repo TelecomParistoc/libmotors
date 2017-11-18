@@ -16,7 +16,7 @@ void turn(int heading, void (*callback)(void));
 int getDirection();
 
 /* set current absolute location of the robot (x, y in mm) */
-void setPosition(int x, int y);
+void setPosition(float x, float y);
 
 /* turn toward (x, y), go there then turn to goalAngle. Robot will try to minimize
  * rotation at the end of the movement so it will go forward or backward accordingly.
