@@ -26,6 +26,7 @@ static int eomThreadStarted = 0; // 1 if endOfMoveThread has been started, 0 oth
 // global variables used by move function (and callback system)
 static int goalDist;
 static void (*distCallback)(void) = NULL;
+/* for collision sensors */
 static int currentDirection = DIR_NONE;
 // global variables used by turn function (and callback system)
 static int goalHeading;
@@ -52,8 +53,9 @@ static void* endOfMoveThread(void* arg) {
 		if(headingCallback != NULL) {
 			int heading = getHeading();
 			if(angleDiff(heading, goalHeading) <= ANGLE_TOLERANCE && lastHeading == heading) {
-				headingCallback();
+				void (*toCall)(void) = headingCallback;
 				headingCallback = NULL;
+				toCall();
 			}
 			lastHeading = heading;
 		}
