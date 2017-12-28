@@ -76,7 +76,15 @@
 
 // Heading distance sync reference
 #define HEADING_DIST_SYNC_REF 0xA6
-// stop robot quickly (8 bits)
+// Stop robot quickly (8 bits)
 #define EMERGENCY_STOP    0xA8
+
+// Reset robot going to a wall (8 bits)
+#define WALL_TO_RESET     0x31
+// Direction during robot going to a wall (8 bits)
+#define DIRECTION_RESET   0xA9
+// Orientation after robot went to a wall (16 bits)
+#define ORIENTATION_RESET 0xAA
+
 
 #endif
