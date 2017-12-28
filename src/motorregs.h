@@ -81,6 +81,8 @@
 
 // Reset robot going to a wall (8 bits)
 #define WALL_TO_RESET     0x31
+// End of move boleean (8 bits)
+#define END_OF_MOVE       0x96
 // Direction during robot going to a wall (8 bits)
 #define DIRECTION_RESET   0xA9
 // Orientation after robot went to a wall (16 bits)
