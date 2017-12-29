@@ -78,6 +78,15 @@ int getDistance() { return I2Cread32(MOTOR_ADDR, DIST); }
 void setGoalDistance(int dist)   { I2Cwrite32(MOTOR_ADDR, GOAL_DIST, dist); }
 void setGoalHeading(int heading) { I2Cwrite16(MOTOR_ADDR, GOAL_HEADING, heading); }
 
+// make robot move until wall
+void moveToWall()  { I2Cwrite8(MOTOR_ADDR, WALL_TO_RESET, 1); }
+// get if the robot ended its move
+int isMoveFinished() { I2CRead8(MOTOR_ADDR, END_OF_MOVE); }
+// set direction when robot goes to wall
+void setDirectionToWall(int forward) { I2Cwrite8(MOTOR_ADDR, DIRECTION_RESET, forward); }
+// set orientation after robot reached the wall
+void setOrientationAfterWall(int heading) { I2Cwrite16(MOTOR_ADDR, ORIENTATION_RESET, heading); }
+
 // stop moving as quick as possible
 void emergencyStop() { I2Cwrite8(MOTOR_ADDR, EMERGENCY_STOP, 1); }
 // resume movement interrupted by emergencyStop
