@@ -109,7 +109,7 @@ int getDirection() {
 	return currentDirection;
 }
 
-void setPosition(float x, float y) {
+void setPosition(int x, int y) {
 	setPosX(x);
 	setPosY(y);
 }
@@ -129,7 +129,7 @@ void moveTo(int x, int y, int goalAngle, void (*callback)(void)) {
 	int deltaX = x - getPosX(), deltaY = y - getPosY();
 
 	// compute heading the robot should have to go to its destination forward
-	int angle = (int) (atan2(deltaY, deltaX)*180.0/M_PI); // - 90
+	int angle = atan2(deltaY, deltaX)*180.0/M_PI;
 	while(angle >= 360) angle -= 360;
 	while(angle < 0) angle += 360;
 

@@ -64,11 +64,11 @@ void writeMotorsFlash() {
 }
 
 // get/set current absolute position x (in mm)
-void setPosX(float x) { I2CwriteFloat(MOTOR_ADDR, X_POS, x); }
-float  getPosX()      { return I2CreadFloat(MOTOR_ADDR, X_POS); }
+void setPosX(int x) { I2Cwrite16(MOTOR_ADDR, X_POS, x); }
+int getPosX()      { return I2Cread16(MOTOR_ADDR, X_POS); }
 // get/set current absolute position y (in mm)
-void setPosY(float y) { I2CwriteFloat(MOTOR_ADDR, Y_POS, y); }
-float  getPosY()      { return I2CreadFloat(MOTOR_ADDR, Y_POS); }
+void setPosY(int y) { I2Cwrite16(MOTOR_ADDR, Y_POS, y); }
+int getPosY()      { return I2Cread16(MOTOR_ADDR, Y_POS); }
 // get/set current heading (in deg from 0 to 360 counterclockwise)
 int getHeading()  { return I2Cread16(MOTOR_ADDR, HEADING); }
 void setHeading(int heading) { I2Cwrite16(MOTOR_ADDR, HEADING, heading); }

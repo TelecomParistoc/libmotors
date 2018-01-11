@@ -61,11 +61,11 @@ void setCodingWheelRightOrientation(int orientation);
 void writeMotorsFlash();
 
 /* get/set current absolute position x (in mm) */
-float  getPosX();
-void setPosX(float x);
+int  getPosX();
+void setPosX(int x);
 /* get/set current absolute position y (in mm) */
-float  getPosY();
-void setPosY(float y);
+int  getPosY();
+void setPosY(int y);
 /* get/set current heading (in deg from 0 to 360 counterclockwise) */
 int  getHeading();
 void setHeading(int heading);
