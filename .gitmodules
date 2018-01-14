@@ -1,3 +1,6 @@
 [submodule "i2cInterfaceGenerator"]
 	path = i2cInterfaceGenerator
 	url = git@github.com:TelecomParistoc/i2cInterfaceGenerator.git
+[submodule "i2cInterface"]
+	path = i2cInterface
+	url = git@github.com:TelecomParistoc/i2cInterface.git
