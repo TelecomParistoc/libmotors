@@ -63,4 +63,50 @@ install: build/$(TARGET) jsinstall motorconf
 	ldconfig
 	ldconfig -p | grep motors
 
+
+bigConfig:
+	motorconf write wheelsgap 			150
+	motorconf write tickspermeter 	5100
+	motorconf write linacc 					10
+	motorconf write angacc 					50
+	motorconf write linspeed				30
+	motorconf write angspeed 				45
+	motorconf write linp						800
+	motorconf write lini 						0
+	motorconf write lind 						0
+	motorconf write angp						100
+	motorconf write angi 						0
+	motorconf write angd 						0
+	motorconf write ldir 						1
+	motorconf write lwheeldir 			1
+	motorconf write lwheeloffset 		0
+	motorconf write rdir 						1
+	motorconf write rwheeldir 			0
+	motorconf write rwheeloffset 		0
+
+smallConfig:
+	motorconf write wheelsgap 			95
+	motorconf write tickspermeter 	5100
+	motorconf write linacc 					10
+	motorconf write angacc 					50
+	motorconf write linspeed				30
+	motorconf write angspeed 				45
+	motorconf write linp						800
+	motorconf write lini 						0
+	motorconf write lind 						0
+	motorconf write angp						100
+	motorconf write angi 						0
+	motorconf write angd 						0
+	motorconf write ldir 						1
+	motorconf write lwheeldir 			1
+	motorconf write lwheeloffset 		0
+	motorconf write rdir 						1
+	motorconf write rwheeldir 			0
+	motorconf write rwheeloffset 		0
+
+
+
+
+
+
 -include $(subst .c,.d,$(SRCS))
