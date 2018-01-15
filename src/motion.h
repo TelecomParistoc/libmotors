@@ -6,8 +6,15 @@
 extern "C" {
 #endif
 
+/* returns the current moving direction */
+#define DIR_NONE 0
+#define DIR_FORWARD 1
+#define DIR_BACKWARD 2
+int getDirection();
 
-/* move forward or backward until a wall has been reached, callback is called if not NULL */
+/* move forward or backward until a wall has been reached,
+ * callback is called if not NULL
+ * direction must be DIR_FORWARD or DIR_BACKWARD */
 void moveUntilWall(int direction, void (*callback)(void));
 
 /* move of the given distance in mm, forward or backward (according to distance sign)
@@ -18,11 +25,6 @@ void move(int distance, void (*callback)(void));
  * when the goal heading has been reached, callback is called if not NULL */
 void turn(int heading, void (*callback)(void));
 
-/* returns the current moving direction */
-#define DIR_NONE 0
-#define DIR_FORWARD 1
-#define DIR_BACKWARD 2
-int getDirection();
 
 /* set current absolute location of the robot (x, y in mm) */
 void setPosition(int x, int y);
