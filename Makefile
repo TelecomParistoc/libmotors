@@ -79,10 +79,8 @@ bigConfig:
 	motorconf write angd 						0
 	motorconf write ldir 						1
 	motorconf write lwheeldir 			1
-	motorconf write lwheeloffset 		0
 	motorconf write rdir 						1
 	motorconf write rwheeldir 			0
-	motorconf write rwheeloffset 		0
 
 smallConfig:
 	motorconf write wheelsgap 			95
@@ -99,10 +97,8 @@ smallConfig:
 	motorconf write angd 						0
 	motorconf write ldir 						0
 	motorconf write lwheeldir 			0
-	motorconf write lwheeloffset 		0
 	motorconf write rdir 						1
 	motorconf write rwheeldir 			1
-	motorconf write rwheeloffset 		0
 
 
 
