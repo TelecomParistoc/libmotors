@@ -1,6 +1,12 @@
 #ifndef MOTION_H
 #define MOTION_H
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /* move of the given distance in mm, forward or backward (according to distance sign)
  * when the goal distance has been reached, callback is called if not NULL */
 void move(int distance, void (*callback)(void));
@@ -35,5 +41,11 @@ void addPointInPath(int x, int y, int goalAngle, void (*callback)(void));
 /* removes all queued moves but does not stop current move. Callback of current
  * move won't be called. */
 void clearPath();
+
+
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

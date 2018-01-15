@@ -1,6 +1,10 @@
 #ifndef MOTORDRIVER_H
 #define MOTORDRIVER_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* read/write distance between coding wheels in mm */
 int  getWheelsGap();
 void setWheelsGap(int gap);
@@ -90,5 +94,9 @@ void setOrientationAfterWall(int heading);
 void emergencyStop();
 /* resume movement interrupted by emergencyStop */
 void emergencyResume();
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
