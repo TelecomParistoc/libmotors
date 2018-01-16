@@ -90,11 +90,11 @@ smallConfig:
 	motorconf write linspeed				30
 	motorconf write angspeed 				45
 	motorconf write linp						800
-	motorconf write lini 						0
+	motorconf write lini 						2
 	motorconf write lind 						0
 	motorconf write angp						100
-	motorconf write angi 						0
-	motorconf write angd 						0
+	motorconf write angi 						1
+	motorconf write angd 						10
 	motorconf write ldir 						0
 	motorconf write lwheeldir 			0
 	motorconf write rdir 						1
