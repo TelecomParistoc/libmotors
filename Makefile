@@ -97,11 +97,11 @@ smallConfig:
 	motorconf write angp						100
 	motorconf write angi 						0
 	motorconf write angd 						0
-	motorconf write ldir 						1
-	motorconf write lwheeldir 			1
+	motorconf write ldir 						0
+	motorconf write lwheeldir 			0
 	motorconf write lwheeloffset 		0
 	motorconf write rdir 						1
-	motorconf write rwheeldir 			0
+	motorconf write rwheeldir 			1
 	motorconf write rwheeloffset 		0
 
 
