@@ -21,10 +21,8 @@
     angd: motors.angular.d,
     ldir: motors.left.motorDirection,
     lwheeldir: motors.left.wheelDirection,
-    lwheeloffset: motors.left.wheelOffset,
     rdir: motors.right.motorDirection,
     rwheeldir: motors.right.wheelDirection,
-    rwheeloffset: motors.right.wheelOffset,
     distance: function(dist) {
       if (typeof dist === 'number') {
         motors.goalDistance(dist);
