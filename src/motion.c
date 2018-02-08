@@ -34,12 +34,23 @@ static void (*headingCallback)(void) = NULL;
 // global variables used by moveTo function (and callback system)
 static int moveToAngle, moveToDist;
 static void (*moveToCallback)(void) = NULL;
+// global variables used by moveUntilWall function (and callback system)
+static void (*moveFinishedCallback)(void) = NULL;
 
 static void* endOfMoveThread(void* arg) {
 	int lastDistance = 0;
 	int lastHeading = -1;
 
 	while(1) {
+		if(moveFinishedCallback != NULL) {
+			if(isMoveFinished()) {
+				void (*toCall)(void) = moveFinishedCallback;
+				moveFinishedCallback = NULL;
+				printf("calling callback %p...\n", toCall);
+				toCall();
+				currentDirection = DIR_NONE;
+			}
+		}
 		if(distCallback != NULL) {
 			int dist = getDistance();
 			if(abs(dist-goalDist) <= DIST_TOLERANCE && lastDistance == dist) {
@@ -63,6 +74,30 @@ static void* endOfMoveThread(void* arg) {
 		waitFor(200);
 	}
 	return NULL;
+}
+
+void moveUntilWall(int direction, void (*callback)(void)) {
+	printf("Calling moveUntilWall\n");
+	
+	if(direction != DIR_FORWARD && direction != DIR_BACKWARD)
+	{
+		printf("ERROR : direction must be DIR_FORWARD (%d) or DIR_BACKWARD (%d), not %d\n", DIR_FORWARD, DIR_BACKWARD, direction);
+		return;
+	}
+	moveFinishedCallback = callback;
+	setDirectionToWall(2-direction);
+	moveToWall();
+
+	// if a callback has been specified, start endOfMoveThread if not started yet
+	if(callback != NULL && !eomThreadStarted) {
+		if(pthread_create(&eomThread, NULL, endOfMoveThread, NULL))
+			printf("ERROR : cannot create end of move thread\n");
+		else
+			eomThreadStarted = 1;
+	}
+
+	// update current direction
+	currentDirection = direction;
 }
 
 void move(int distance, void (*callback)(void)) {
