@@ -3,12 +3,68 @@ from encapsulate_callback import encapsulate_callback
 
 lib_motors = ctypes.cdll.LoadLibrary(LIBNAME)
 
-lib_motors.move.restype = None
-lib_motors.turn.restype = None
-lib_motors.getDirection.restype = ctypes.c_int
-lib_motors.setPosition.restype = None
-lib_motors.moveTo.restype = None
-lib_motors.addPointInPath.restype = None
+lib_motors.getWheelsGap.restype = ctypes.c_int
+lib_motors.setWheelsGap.restype = None
+
+lib_motors.getTicksPerMeter.restype = ctypes.c_int
+lib_motors.setTicksPerMeter.restype = None
+
+lib_motors.getLinearMaxAcceleration.restype = ctypes.c_int
+lib_motors.setLinearMaxAcceleration.restype = None
+lib_motors.getAngularMaxAcceleration.restype = ctypes.c_int
+lib_motors.setAngularMaxAcceleration.restype = None
+
+lib_motors.getLinearCruiseSpeed.restype = ctypes.c_int
+lib_motors.setLinearCruiseSpeed.restype = None
+lib_motors.getAngularCruiseSpeed.restype = ctypes.c_int
+lib_motors.setAngularCruiseSpeed.restype = None
+
+lib_motors.getLinearP.restype = ctypes.c_int
+lib_motors.setLinearP.restype = None
+lib_motors.getLinearI.restype = ctypes.c_int
+lib_motors.setLinearI.restype = None
+lib_motors.getLinearD.restype = ctypes.c_int
+lib_motors.setLinearD.restype = None
+
+lib_motors.getAngularP.restype = ctypes.c_int
+lib_motors.setAngularP.restype = None
+lib_motors.getAngularI.restype = ctypes.c_int
+lib_motors.setAngularI.restype = None
+lib_motors.getAngularD.restype = ctypes.c_int
+lib_motors.setAngularD.restype = None
+
+lib_motors.getMotorLeftForwardSense.restype = ctypes.c_int
+lib_motors.setMotorLeftForwardSense.restype = None
+lib_motors.getMotorRightForwardSense.restype = ctypes.c_int
+lib_motors.setMotorRightForwardSense.restype = None
+
+lib_motors.getCodingWheelLeftInitialTicks.restype = ctypes.c_int
+lib_motors.setCodingWheelLeftInitialTicks.restype = None
+lib_motors.getCodingWheelRightInitialTicks.restype = ctypes.c_int
+lib_motors.setCodingWheelRightInitialTicks.restype = None
+
+lib_motors.getCodingWheelLeftOrientation.restype = ctypes.c_int
+lib_motors.getCodingWheelLeftOrientation.restype = None
+lib_motors.getCodingWheelRightOrientation.restype = ctypes.c_int
+lib_motors.getCodingWheelRightOrientation.restype = None
+
+lib_motors.writeMotorsFlash.restype = None
+
+lib_motors.getPosX.restype = ctypes.c_int
+lib_motors.setPosX.restype = None
+lib_motors.getPosY.restype = ctypes.c_int
+lib_motors.setPosY.restype = None
+
+lib_motors.getHeading.restype = ctypes.c_int
+lib_motors.setHeading.restype = None
+
+lib_motors.getDistance.restype = ctypes.c_int
+lib_motors.setGoalDistance.restype = None
+lib_motors.setGoalHeading.restype =  None
+
+lib_motors.emergencyStop.restype = None
+lib_motors.emergencyResume.restype = None
+
 
 # Checks if x is a number (int or float)
 def check_number(x):
