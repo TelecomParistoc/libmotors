@@ -7,6 +7,9 @@ extern "C" {
 #endif
 
 
+/* move forward or backward until a wall has been reached, callback is called if not NULL */
+void moveUntilWall(int direction, void (*callback)(void));
+
 /* move of the given distance in mm, forward or backward (according to distance sign)
  * when the goal distance has been reached, callback is called if not NULL */
 void move(int distance, void (*callback)(void));
