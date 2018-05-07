@@ -47,7 +47,9 @@ void addPointInPath(int x, int y, int goalAngle, void (*callback)(void));
  * move won't be called. */
 void clearPath();
 
-
+/* adds intermediate callbacks after the different steps in moveTo */
+void setAfterFirstTurnOfMoveToCallback(void (*callback)(void));
+void setAfterTranslationOfMoveToCallback(void (*callback)(void));
 
 #ifdef __cplusplus
 }

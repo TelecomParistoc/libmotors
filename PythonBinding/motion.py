@@ -65,3 +65,9 @@ def addPointInPath(x, y, goalAngle, callback = lambda: None):
 def clearPath():
 
     lib_motors.clearPath()
+
+def set_after_first_turn_of_move_to_callback(callback):
+    lib_motors.setAfterFirstTurnOfMoveToCallback(encapsulate_callback(callback))
+
+def set_after_translation_of_move_to_callback(callback):
+    lib_motors.setAfterTranslationOfMoveToCallback(encapsulate_callback(callback))

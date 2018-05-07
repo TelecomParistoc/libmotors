@@ -36,6 +36,9 @@ static int moveToAngle, moveToDist;
 static void (*moveToCallback)(void) = NULL;
 // global variables used by moveUntilWall function (and callback system)
 static void (*moveFinishedCallback)(void) = NULL;
+// intermediate callbacks for the different steps in moveTo
+static void (*afterFirstTurnOfMoveToCallback)(void) = NULL;
+static void (*afterTranslationOfMoveToCallback)(void) = NULL;
 
 static void* endOfMoveThread(void* arg) {
 	int lastDistance = 0;
@@ -148,15 +151,31 @@ void setPosition(int x, int y) {
 }
 
 static void translationDone() {
-	printf("Translation done!\n");
+	printf("Translation of moveTo done!\n");
+	if (afterTranslationOfMoveToCallback != NULL){
+		afterTranslationOfMoveToCallback();
+		afterTranslationOfMoveToCallback = NULL;
+	}
 	if(moveToAngle != -1)
 		turn(moveToAngle, moveToCallback);
 	else if(moveToCallback != NULL)
 		moveToCallback();
 }
+
 static void startRotationDone() {
-	printf("rotation done!\n");
+	printf("first rotation of moveTo done!\n");
+	if (afterFirstTurnOfMoveToCallback != NULL){
+		afterFirstTurnOfMoveToCallback();
+		afterFirstTurnOfMoveToCallback = NULL;
+	}
 	move(moveToDist, translationDone);
+}
+
+void setAfterFirstTurnOfMoveToCallback(void (*callback)(void)){
+		afterFirstTurnOfMoveToCallback = callback;
+}
+void setAfterTranslationOfMoveToCallback(void (*callback)(void)){
+	afterTranslationOfMoveToCallback = callback;
 }
 
 void moveTo(int x, int y, int goalAngle, void (*callback)(void)) {
