@@ -38,6 +38,12 @@ void setAngularI(int angI) { I2Cwrite16(DEVICE_ADDR, SETTINGS_ANGULAR_COEFF_I_AD
 int  getAngularD()         { return I2Cread16(DEVICE_ADDR, SETTINGS_ANGULAR_COEFF_D_ADDR); }
 void setAngularD(int angD) { I2Cwrite16(DEVICE_ADDR, SETTINGS_ANGULAR_COEFF_D_ADDR, angD); }
 
+int 	getLeftMotorCoeff() 		{return I2Cread16(DEVICE_ADDR, SETTINGS_LEFT_MOTOR_COEFF_ADDR); }
+void 	setLeftMotorCoeff(int left_coeff){I2Cwrite16(DEVICE_ADDR, SETTINGS_LEFT_MOTOR_COEFF_ADDR, left_coeff); }
+int 	getRightMotorCoeff() 		{return I2Cread16(DEVICE_ADDR, SETTINGS_RIGHT_MOTOR_COEFF_ADDR); }
+void 	setRightMotorCoeff(int right_coeff){I2Cwrite16(DEVICE_ADDR, SETTINGS_RIGHT_MOTOR_COEFF_ADDR, right_coeff); }
+
+
 // read/write motor configuration
 int  getMotorLeftForwardSense()          { return I2Cread8(DEVICE_ADDR, SETTINGS_MOTOR_LEFT_FORWARD_SENSE_ADDR); }
 void setMotorLeftForwardSense(int sense) { I2Cwrite16(DEVICE_ADDR, SETTINGS_MOTOR_LEFT_FORWARD_SENSE_ADDR, sense); }

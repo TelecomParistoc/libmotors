@@ -42,6 +42,12 @@ void setAngularI(int angI);
 int  getAngularD();
 void setAngularD(int angD);
 
+/* motor calibration */
+int   getLeftMotorCoeff();
+void  setLeftMotorCoeff(int left_coeff);
+int   getRightMotorCoeff();
+void  setRightMotorCoeff(int right_coeff);
+
 /* read/write motor configuration */
 int  getMotorLeftForwardSense();
 void setMotorLeftForwardSense(int sense);
