@@ -189,6 +189,7 @@ def set_left_motor_coeff(left_coeff):
     if left_coeff < 500 or left_coeff > 1500:
         print "[WARNING] left_motor_coeff is in per 1000, the value ", left_coeff, "is odd..."
     lib_motors.setLeftMotorCoeff(ctypes.c_int(left_coeff))
+    lib_motors.writeMotorsFlash()
 
 def get_right_motor_coeff():
     return lib_motors.getRightMotorCoeff()
@@ -198,6 +199,7 @@ def set_right_motor_coeff(right_coeff):
     if right_coeff < 500 or right_coeff > 1500:
         print "[WARNING] right_motor_coeff is in per 1000, the value ", right_coeff, "is odd..."
     lib_motors.setRightMotorCoeff(ctypes.c_int(right_coeff))
+    lib_motors.writeMotorsFlash()
 
 # read/write motor configuration
 def get_motor_left_forward_sense():

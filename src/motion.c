@@ -49,6 +49,7 @@ static void* endOfMoveThread(void* arg) {
 			if(isMoveFinished()) {
 				void (*toCall)(void) = moveFinishedCallback;
 				moveFinishedCallback = NULL;
+				printf("returnUntilWall finished! Calling its callback...\n", );
 				toCall();
 				currentDirection = DIR_NONE;
 			}
@@ -58,6 +59,8 @@ static void* endOfMoveThread(void* arg) {
 			if(abs(dist-goalDist) <= DIST_TOLERANCE && lastDistance == dist) {
 				void (*toCall)(void) = distCallback;
 				distCallback = NULL;
+				printf("move(%d) finished! (%d / %d); Callings its callback...\n",
+								goalDist, dist, goalDist);
 				toCall();
 				currentDirection = DIR_NONE;
 			}
@@ -68,6 +71,8 @@ static void* endOfMoveThread(void* arg) {
 			if(angleDiff(heading, goalHeading) <= ANGLE_TOLERANCE && lastHeading == heading) {
 				void (*toCall)(void) = headingCallback;
 				headingCallback = NULL;
+				printf("turn(%d) finished! (%d / %d); Calling its callback\n",
+								goalHeading, heading, goalHeading);
 				toCall();
 			}
 			lastHeading = heading;
