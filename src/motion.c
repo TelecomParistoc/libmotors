@@ -49,7 +49,7 @@ static void* endOfMoveThread(void* arg) {
 			if(isMoveFinished()) {
 				void (*toCall)(void) = moveFinishedCallback;
 				moveFinishedCallback = NULL;
-				printf("returnUntilWall finished! Calling its callback...\n", );
+				printf("returnUntilWall finished! Calling its callback...\n");
 				toCall();
 				currentDirection = DIR_NONE;
 			}
