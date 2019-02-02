@@ -177,8 +177,8 @@ def get_angular_D():
     return lib_motors.getAngularD()
 
 def set_angular_D(angD):
-    check_number(angP)
-    lib_motors.setAngularD(ctypes.c_int(angP))
+    check_number(angD)
+    lib_motors.setAngularD(ctypes.c_int(angD))
 
 #motor calibration
 def get_left_motor_coeff():
