@@ -154,8 +154,8 @@ def get_linear_D():
     return lib_motors.getLinearD()
 
 def set_linear_D(linD):
-    check_number(linP)
-    lib_motors.setLinearD(ctypes.c_int(linP))
+    check_number(linD)
+    lib_motors.setLinearD(ctypes.c_int(linD))
 
 
 # read/write angular PID coefficients
