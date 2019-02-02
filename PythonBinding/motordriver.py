@@ -101,7 +101,7 @@ def set_ticks_per_meter(val):
 
 # Maximum translating acceleration (in mm.s^-2)
 def get_linear_max_acceleration():
-    return lib_motors.getLinearMaxAcceleration
+    return lib_motors.getLinearMaxAcceleration()
 
 def set_linear_max_acceleration(acc):
     check_number(acc)
@@ -110,7 +110,7 @@ def set_linear_max_acceleration(acc):
 
 # Maximum rotating acceleration (in deg.s^-2)
 def get_angular_max_acceleration():
-    return lib_motors.getAngularMaxAcceleration();
+    return lib_motors.getAngularMaxAcceleration()
 
 def set_angular_max_acceleration(acc):
     check_number(acc)
