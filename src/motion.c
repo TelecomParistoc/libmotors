@@ -240,8 +240,10 @@ void addPointInPath(int x, int y, int goalAngle, void (*callback)(void)) {
 	addToQueue((void*) newMove);
 	// if newMove is the only item is the queue, start move now
 	if(getQueueSize() == 1)
-	printf("moveTO %d %d\n", x, y);
+	{
+		printf("moveTO %d %d\n", x, y);
 		moveTo(x, y, goalAngle, queuedMoveDone);
+	}
 }
 
 void clearPath() {
