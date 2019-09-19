@@ -8,6 +8,8 @@ This library is designed for Raspberry Pi with Raspbian.
 * First, you need [wiringPi](http://wiringpi.com/download-and-install/) and
 [librobotutils](https://github.com/TelecomParistoc/librobotutils).
 
+* You also need to install libxml2-dev
+
 * Once dependencies are installed, get back the sources :
 `git clone git@github.com:TelecomParistoc/libmotors.git`
 
