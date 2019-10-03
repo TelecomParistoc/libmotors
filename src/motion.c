@@ -4,7 +4,6 @@
 #include <robotutils.h>
 #include <pthread.h>
 
-#include "queue.h"
 #include "motion.h"
 #include "motordriver.h"
 
@@ -14,12 +13,6 @@
 #define DIST_TOLERANCE 10 //8 // mm
 #define ANGLE_TOLERANCE 7 //5 // deg
 
-struct pathPoint {
-	int x;
-	int y;
-	int goalHeading;
-	void (*callback)(void);
-};
 
 static pthread_t eomThread; // endOfMoveThread structure
 static int eomThreadStarted = 0; // 1 if endOfMoveThread has been started, 0 otherwise
@@ -212,40 +205,4 @@ void moveTo(int x, int y, int goalAngle, void (*callback)(void)) {
 	moveToCallback = callback;
 	moveToAngle = goalAngle;
 	turn(angle, startRotationDone);
-}
-
-// called when a queued move has been completed
-static void queuedMoveDone() {
-	printf("queuedMoveDone is called\n");
-	struct pathPoint* lastMove = (struct pathPoint*) getHead();
-	// call move callback if any
-	if(lastMove != NULL && lastMove->callback != NULL)
-		lastMove->callback();
-	removeHead();
-
-	// start next move if any
-	if(getQueueSize() > 0) {
-		struct pathPoint* nextMove = (struct pathPoint*) getHead();
-		moveTo(nextMove->x, nextMove->y, nextMove->goalHeading, queuedMoveDone);
-	}
-}
-
-void addPointInPath(int x, int y, int goalAngle, void (*callback)(void)) {
-	struct pathPoint* newMove = malloc(sizeof(struct pathPoint));
-	newMove->x = x;
-	newMove->y = y;
-	newMove->goalHeading = goalAngle;
-	newMove->callback = callback;
-	// put new move at the tail of the queue
-	addToQueue((void*) newMove);
-	// if newMove is the only item is the queue, start move now
-	if(getQueueSize() == 1)
-	{
-		printf("moveTO %d %d\n", x, y);
-		moveTo(x, y, goalAngle, queuedMoveDone);
-	}
-}
-
-void clearPath() {
-	clearQueue();
 }

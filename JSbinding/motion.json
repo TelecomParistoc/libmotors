@@ -32,18 +32,5 @@
       "int",
       "void"
     ]
-  ],
-  "addPointInPath": [
-    "void",
-    [
-      "int",
-      "int",
-      "int",
-      "void"
-    ]
-  ],
-  "clearPath": [
-    "void",
-    []
   ]
-}
+  }

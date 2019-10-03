@@ -50,22 +50,6 @@ def moveTo(x, y, goalAngle, callback = lambda: None):
     lib_motors.moveTo(ctypes.c_int(x), ctypes.c_int(y), ctypes.c_int(goalAngle),
                       encapsulate_callback(callback))
 
-
-def addPointInPath(x, y, goalAngle, callback = lambda: None):
-
-    check_number(x)
-    check_number(y)
-    check_number(goalAngle)
-
-    lib_motors.addPointInPath(ctypes.c_int(x), ctypes.c_int(y),
-                              ctypes.c_int(goalAngle),
-                              encapsulate_callback(callback))
-
-
-def clearPath():
-
-    lib_motors.clearPath()
-
 def set_after_first_turn_of_move_to_callback(callback):
     lib_motors.setAfterFirstTurnOfMoveToCallback(encapsulate_callback(callback))
 
