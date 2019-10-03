@@ -1,5 +1,5 @@
 TARGET = libmotors.so
-SRCS = motordriver.c motion.c queue.c
+SRCS = motordriver.c motion.c
 HEADERS = $(addprefix src/, ${SRCS:.c=.h}) src/driver.h
 OBJECTS = $(addprefix build/,${SRCS:.c=.o})
 TESTS = tests/simplemoves tests/absolute tests/galette tests/moveTo_command_line tests/reset_dir tests/move_to_wall

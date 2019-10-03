@@ -8,7 +8,6 @@ lib_motors.turn.restype = None
 lib_motors.getDirection.restype = ctypes.c_int
 lib_motors.setPosition.restype = None
 lib_motors.moveTo.restype = None
-lib_motors.addPointInPath.restype = None
 
 DIR_NONE = 0
 DIR_FORWARD = 1
